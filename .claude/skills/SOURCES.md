@@ -10,4 +10,6 @@
   - claude-instagram-autopilot, claude-figma-stack, claude-agent-blueprint contain no SKILL.md;
     copied as-is to `vendor/ootto-ai/` (their GitHub workflows are NOT active there).
 
-Note: `agent-reach` tells Claude to follow third-party install docs from github.com/Panniantong/Agent-Reach.
+Removed after security review: `agent-reach` (over-broad "MUST USE" trigger; told Claude to run
+unpinned remote install instructions from github.com/Panniantong/Agent-Reach) and `humanizer`
+(duplicates the built-in anthropic-skills:humanizer).
