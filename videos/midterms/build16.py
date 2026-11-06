@@ -1,6 +1,7 @@
 # Horizontal (1920x1080) midterms explainer synced to the ElevenLabs voiceover (vo.mp3).
 import re
 B='/home/user/content/.claude/skills/mesokla-brand'
+A='/home/user/content/videos/midterms/assets/'
 O=3.0                      # voice starts after the slow moth intro
 VO_END=74.21
 T=O+VO_END+3.4
@@ -31,7 +32,7 @@ def at(i,word,nth=1):
     raise KeyError((i,word))
 def st(i): return O+S[i][1]
 css=[];n=[0]
-EV={'wipe':[],'hl':[],'pop':[],'tick':[],'reveal':[]}
+EV={'wipe':[],'hl':[],'pop':[],'tick':[],'reveal':[],'card':[]}
 def kf(frames):
     if frames[-1][0]<T: frames=list(frames)+[(T,frames[-1][1])]
     n[0]+=1; name=f'a{n[0]}'
@@ -54,6 +55,10 @@ def words(text,t0,t1,extra=''):
         t=t0+(t1-t0)*i/max(1,len(ws)-1) if len(ws)>1 else t0
         out.append(f'<span class="w" style="{appear(t,.35,"opacity:0;transform:translateY(30px)","opacity:1;transform:none")}">{w}</span>')
     return ' '.join(out)
+def card(src,cap,t,bc,w,rot=-2):
+    EV['card'].append(round(t,3))
+    return (f'<div class="card" style="--bc:{bc};width:{w}px;justify-self:end;{appear(t,.5,f"opacity:0;transform:translateY(60px) rotate({rot*3}deg) scale(.92)",f"opacity:1;transform:rotate({rot}deg)")}">'
+            f'<img src="{src}" style="width:100%;display:block"><div class="cap">{cap}</div></div>')
 FORE="M196 196C160 120 100 70 40 66C22 100 30 170 76 204C116 226 168 214 196 206Z"
 HIND="M196 214C164 222 112 244 96 292C98 330 142 342 170 306C184 286 192 252 196 230Z"
 MIR='transform="translate(400 0) scale(-1 1)"'
@@ -91,37 +96,35 @@ tB=st(2)-.3
 scene(tB,L,f'''<div class="fr">{K('this week · us midterms',tB+.4,V)}
 <div class="two"><div class="h" style="font-size:130px">{words('who won congress?',tB+.3,at(2,'won'))}</div>
 <div>{row('house',at(2,'house'))}{row('senate',at(2,'senate'))}</div></div></div>''',C,'crimson','l')
-# ---- C · money (violet) ----
+# ---- C · money (violet) + Cointelegraph headline ----
 tC=st(3)-.3
 nums=''.join(f'<span>{v}</span>' for v in range(0,201,10))
 a0,a1=at(3,'most'),at(3,'fairshake')
 EV['tick']=[round(a0+(a1-a0)*k/20,3) for k in range(1,21)]
 css.append('@keyframes odo{0%{transform:translateY(0)}'+f'{a0/T*100:.4f}%{{transform:translateY(0);animation-timing-function:steps(20,end)}}{a1/T*100:.4f}%{{transform:translateY(-20em)}}100%{{transform:translateY(-20em)}}'+'}')
-spin=kf([(0,'transform:rotate(0)'),(T,'transform:rotate(300deg)')])
-scene(tC,V,f'''<img class="deco" src="{B}/elements/spot-crimson.svg" style="right:-200px;top:180px;width:760px;{spin}">
-<div class="fr">{K('the bet',tC+.4)}
-<div style="margin:auto 0">
-<div class="h" style="font-size:300px;line-height:.9;{appear(a0-.2,.4)}">≈$<span class="odo"><span class="strip" style="animation:odo {T}s linear both">{nums}</span></span>M</div>
-<div class="h" style="font-size:64px;margin-top:20px;{fade(a1-.3)}">through {hl('fairshake',a1,C,L,L)} + super pacs</div>
-<div class="stamp" style="{pop(at(4,'other'))}">key races went the other way</div></div></div>''',L,'leaf','r')
-# ---- D · Ohio (crimson) ----
+scene(tC,V,f"""<div class="fr">{K('the bet',tC+.4)}
+<div class="two" style="grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr)"><div>
+<div class="h" style="font-size:168px;line-height:.9;white-space:nowrap;{appear(a0-.2,.4)}">≈$<span class="odo"><span class="strip" style="animation:odo {T}s linear both">{nums}</span></span>M</div>
+<div class="h" style="font-size:54px;margin-top:20px;{fade(a1-.3)}">through {hl('fairshake',a1,C,L,L)} + super pacs</div>
+<div class="stamp" style="{pop(at(4,'other'))}">key races went the other way</div></div>
+{card(A+'ct-headline.png','source: Cointelegraph · Nov 4',at(3,'industry'),C,840,-2)}</div></div>""",L,'leaf','r')
+# ---- D · Ohio (crimson) + Brown photo ----
 tD=st(5)-.3
-reveal=kf([(0,'clip-path:inset(0 100% 0 0)'),(at(7,'tens'),'clip-path:inset(0 100% 0 0)'),(at(7,'out'),'clip-path:inset(0 0 0 0)')])
-scene(tD,C,f'''<img class="deco" src="{B}/elements/spot-violet.svg" style="right:180px;top:300px;width:420px;{appear(at(7,'tens')-.3,.5,'opacity:0;transform:scale(.6)','opacity:1;transform:none')}">
-<svg class="deco" viewBox="0 0 1920 1080" style="left:0;top:0;width:1920px;height:1080px;{reveal}"><path d="M900 1000C1150 960 1300 860 1420 700S1700 380 1880 260" fill="none" stroke="{L}" stroke-width="10" stroke-linecap="round" stroke-dasharray="0 26"/></svg>
-<div class="fr" style="max-width:1150px">
-<div class="h" style="font-size:90px">{words('ohio hurt the most.',at(5,'ohio'),at(5,'most'))}</div>
-<div class="h" style="font-size:170px;margin-top:40px">{words('sherrod brown',at(6,'sherrod'),at(6,'brown'))}</div>
+scene(tD,C,f"""<div class="fr"><div class="two" style="grid-template-columns:minmax(0,1.05fr) minmax(0,.95fr)"><div>
+<div class="h" style="font-size:84px">{words('ohio hurt the most.',at(5,'ohio'),at(5,'most'))}</div>
+<div class="h" style="font-size:150px;margin-top:36px">{words('sherrod brown',at(6,'sherrod'),at(6,'brown'))}</div>
 <div class="sub" style="{fade(at(6,'sceptical'))}">crypto sceptic for years · tens of millions spent against him</div>
-<div class="h" style="font-size:110px;margin-top:40px;{fade(at(8,"he's")-.1)}">{hl('back in the senate.',at(8,'back'),V,L,L)}</div></div>''',L,'leaf','l')
-# ---- E · Warren (leaf) ----
+<div class="h" style="font-size:96px;margin-top:36px;{fade(at(8,"he's")-.1)}">{hl('back in the senate.',at(8,'back'),V,L,L)}</div></div>
+{card(A+'brown.webp','Sherrod Brown · D-Ohio',at(6,'sherrod')-.2,V,700,2)}</div></div>""",L,'leaf','l')
+# ---- E · Warren (leaf) + photo ----
 tE=st(9)-.3
 items=[('exchanges','exchanges'),('stablecoins','stablecoins'),('aml / kyc','a-m-l'),('officials’ crypto deals','deals')]
 lis=''.join(f'<li style="{appear(at(11,w),.4,"opacity:0;transform:translateX(-60px)","opacity:1;transform:none")}"><b>0{i+1}</b>{x}</li>' for i,(x,w) in enumerate(items))
-scene(tE,L,f'''<div class="fr">{K('the bigger change',tE+.4,V)}
-<div class="two"><div><div class="h" style="font-size:118px">{words('elizabeth warren',at(9,'elizabeth'),at(9,'warren'))}</div>
-<div class="h" style="font-size:58px;margin-top:40px;{fade(at(10,'expected')-.2)}">expected to {hl('chair senate banking',at(10,'chair'),V,L,C)}</div></div>
-<div><div class="k" style="color:{V};{fade(at(11,'closer'))}">closer attention to</div><ol class="list">{lis}</ol></div></div></div>''',C,'crimson','r')
+scene(tE,L,f"""<div class="fr">{K('the bigger change',tE+.4,V)}
+<div class="three">{card(A+'warren.webp','Elizabeth Warren',at(9,'elizabeth')-.3,V,500,-2)}
+<div><div class="h" style="font-size:96px">{words('elizabeth warren',at(9,'elizabeth'),at(9,'warren'))}</div>
+<div class="h" style="font-size:46px;margin-top:30px;{fade(at(10,'expected')-.2)}">expected to {hl('chair senate banking',at(10,'chair'),V,L,C)}</div></div>
+<div><div class="k" style="color:{V};{fade(at(11,'closer'))}">closer attention to</div><ol class="list sm2">{lis}</ol></div></div></div>""",C,'crimson','r')
 # ---- F · CLARITY (violet) ----
 tF=st(12)-.3
 s0,s1=at(12,'bills'),at(12,'stall')
@@ -133,19 +136,23 @@ scene(tF,V,f'''<div class="fr">{K('the bills',tF+.4)}
 <div class="pb" style="{appear(s0,.4)}"><div class="pf" style="{prog}"></div></div>
 <div class="lander" style="{land}"><div style="transform-origin:center;{fold}">{moth(L,L,.55)}</div></div>
 <div class="h" style="font-size:64px;margin-top:50px">{hl(words('will probably stall',at(12,'will'),s1),s1,C,L,L)} <span style="{fade(at(12,'come'))}">· or come back very different</span></div></div></div>''',L,'leaf','l')
-# ---- G · market (leaf) ----
+# ---- G · market (leaf) + real CoinGecko chart ----
 tG=st(13)-.3
 c0,c1=at(14,'bitcoin'),at(14,'harder')+.3
-draw=kf([(0,'stroke-dashoffset:1'),(c0,'stroke-dashoffset:1'),(c1,'stroke-dashoffset:0')])
-def lab(txt,x,y,t): return f'<div class="cl" style="left:{x}px;top:{y}px;{appear(t,.35,"opacity:0;transform:scale(.8)","opacity:1;transform:none")}">{txt}</div>'
-scene(tG,L,f'''<div class="fr">{K('the market',tG+.4,V)}
-<div class="two" style="grid-template-columns:640px 1fr">
-<div><div class="h" style="font-size:96px">{words("didn’t know what to do with it.",at(13,'market'),at(13,'it'))}</div>
+wipe_chart=kf([(0,'clip-path:inset(0 100% 0 0)'),(c0,'clip-path:inset(0 100% 0 0)'),(c1,'clip-path:inset(0 0 0 0)')])
+EV['card'].append(round(c0-.4,3))
+sc=1040/1952
+def lab(txt,x,y,t): return f'<div class="cl" style="left:{x*sc:.0f}px;top:{y*sc:.0f}px;{appear(t,.35,"opacity:0;transform:scale(.8)","opacity:1;transform:none")}">{txt}</div>'
+def ring(x,y,t): return f'<div class="ring" style="left:{x*sc-22:.0f}px;top:{y*sc-22:.0f}px;{appear(t,.3,"opacity:0;transform:scale(.4)","opacity:1;transform:none")}"></div>'
+scene(tG,L,f"""<div class="fr">{K('the market',tG+.4,V)}
+<div class="two" style="grid-template-columns:560px 1fr;gap:60px">
+<div><div class="h" style="font-size:88px">{words("didn’t know what to do with it.",at(13,'market'),at(13,'it'))}</div>
 <div class="tag" style="{pop(at(15,'trump'))}">trump-linked tokens: hit hardest</div></div>
-<div class="chart" style="{fade(c0-.4)}"><svg viewBox="0 0 920 520" width="920" height="520"><path pathLength="1" d="M0 250L150 230L270 340L380 300L520 160L620 200L740 330L920 470" fill="none" stroke="{C}" stroke-width="10" stroke-linecap="round" stroke-linejoin="round" style="stroke-dasharray:1 1;{draw}"/>
-<g fill="{V}"><circle cx="270" cy="340" r="14" style="{fade(at(14,'count'),.3)}"/><circle cx="520" cy="160" r="14" style="{fade(at(14,'seventy'),.3)}"/><circle cx="920" cy="470" r="14" style="{fade(at(14,'harder'),.3)}"/></g></svg>
-{lab('dip during the count',160,370,at(14,'count'))}{lab('wed: back above $78k',380,90,at(14,'seventy'))}{lab('then sold off harder',580,410,at(14,'sold'))}
-<div class="ill">illustrative</div></div></div></div>''',C,'crimson','r')
+<div class="card" style="--bc:{V};width:1060px;{appear(c0-.4,.45,'opacity:0;transform:translateY(40px) rotate(0deg)','opacity:1;transform:rotate(-1deg)')}">
+<div style="position:relative;width:1040px;height:{1070*sc:.0f}px"><img src="{A}btc-7d.png" style="width:1040px;display:block;{wipe_chart}">
+{ring(1165,805,at(14,'count'))}{ring(1372,195,at(14,'seventy'))}{ring(1545,840,at(14,'sold'))}
+{lab('dip during the count',820,860,at(14,'count'))}{lab('wed: back above $78k',900,90,at(14,'seventy'))}{lab('then sold off harder',1180,930,at(14,'sold'))}</div>
+<div class="cap">source: CoinGecko · BTC 7D</div></div></div></div>""",C,'crimson','r')
 # ---- H · takes (three columns) ----
 tH=st(16)-.3
 takes=[(L,C,'“it’s a reset.”',at(17,'reset')-.4),(V,L,'“a divided government keeps things from swinging too far.”',at(18,'divided')-.3),(C,L,'“warren will come after the industry.”',at(18,'warren')-.3)]
@@ -210,6 +217,11 @@ html,body{{width:1920px;height:1080px;overflow:hidden;background:{C}}}
 .outro{{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;padding-bottom:60px}}
 .olm{{width:320px;margin-bottom:30px}}
 .sc .sig,.sc .hd{{z-index:2}}
+.card{{background:var(--bc);padding:10px 10px 0;box-sizing:border-box}}
+.cap{{font-family:Manrope;font-weight:800;font-size:20px;letter-spacing:.12em;text-transform:uppercase;color:{L};padding:10px 4px 12px}}
+.three{{margin:auto 0;display:grid;grid-template-columns:500px minmax(0,1fr) minmax(0,.9fr);gap:60px;align-items:center}}
+.sm2 li{{font-size:40px;padding:18px 0}}
+.ring{{position:absolute;width:44px;height:44px;border-radius:50%;border:6px solid {V};background:{L}}}
 {''.join(css)}
 </style></head><body>{''.join(scenes)}</body></html>'''
 open('midterms16.html','w').write(html)

@@ -67,6 +67,7 @@ def popx(f0):
 for i,h in enumerate(E['hl']): put(fx,popx(880*2**((i%4)/12)),h,.22)
 def tick():
     t=t_(.02); return np.sin(2*np.pi*1600*t)*np.exp(-t*300)
+for c in E.get('card',[]): put(fx,whoosh(.4)*.6,c-.05,.3); put(fx,popx(520),c+.25,.18)
 for x in E['tick']: put(fx,tick(),x,.16)
 def thud():
     t=t_(.3); f=50+70*np.exp(-t*30); return np.sin(2*np.pi*np.cumsum(f)/SR)*np.exp(-t*12)+hp(rng.standard_normal(len(t)),2000)*np.exp(-t*60)*.3
