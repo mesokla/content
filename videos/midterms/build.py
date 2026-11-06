@@ -107,7 +107,7 @@ scene(59,V,f'''<div class="fr">{K('what it means for web3',59.6)}
 fly=kf([(0,'transform:translate(-500px,900px) rotate(30deg) scale(.6)'),(68.3,'transform:translate(-500px,900px) rotate(30deg) scale(.6)'),(70.2,'transform:translate(0,0) rotate(0) scale(1)')])
 scene(68,C,f'''<div class="outro"><div class="olm" style="{fly}">{moth(L,L,.55,7)}</div>
 <div class="h" style="font-size:150px;{appear(70.0,.5)}">mesokla</div>
-<div class="k" style="margin-top:40px;{appear(70.8,.5,'opacity:0','opacity:1')}">full breakdown in the thread ↓</div></div>''',L,'leaf','r')
+<div class="k" style="margin-top:40px;{appear(70.8,.5,'opacity:0','opacity:1')}">what’s your take? reply ↓</div></div>''',L,'leaf','r')
 
 html=f'''<!doctype html><html><head><meta charset="utf-8"><title>Midterms explainer</title>
 <link rel="stylesheet" href="{B}/fonts/fonts.css"><style>

@@ -1,30 +1,27 @@
-# Midterms × crypto — post copy
+# Midterms × crypto — post copy (single post with the video, no thread)
 
-## Main post (with the video)
+## Option A — short
 
 Crypto spent ~$200M on the US midterms.
 
-It got Sherrod Brown back, a Democratic Congress, and Elizabeth Warren likely running Senate Banking.
+It got a Democratic Congress, Sherrod Brown back in the Senate and Elizabeth Warren likely running Senate Banking.
 
-What changes for web3 👇
+Regulation isn't dead. It's slower and stricter.
 
-## Thread
+What's your take? 👇
 
-1/ Nov 3–4: Democrats took both the House and the Senate. Crypto Super PACs, mostly Fairshake, spent an estimated $176–200M. The key races didn't go their way.
+## Option B — longer (fits in one post for verified accounts)
 
-2/ The headline loss: Ohio. Sherrod Brown, a long-time crypto sceptic, is back in the Senate despite tens of millions spent against him.
+Crypto spent ~$176–200M on the US midterms, mostly through Fairshake. The key races didn't go its way:
 
-3/ The bigger one: Elizabeth Warren is expected to chair the Senate Banking Committee. Expect more pressure on exchanges, stablecoins, AML/KYC and the crypto business of public officials.
+→ Democrats took the House and the Senate
+→ Sherrod Brown is back in Ohio
+→ Elizabeth Warren is expected to chair Senate Banking
+→ the CLARITY Act will likely stall or be rewritten
 
-4/ Market structure bills like the CLARITY Act will likely stall or be rewritten. The industry was counting on bipartisan support; the room just got tougher.
+My take: regulation isn't dead, it's slower and stricter. Compliance becomes part of the pitch.
 
-5/ Markets: a dip during the count, BTC back above $78–80k on Wednesday, then a heavier sell-off. Trump-linked tokens (WLFI, TRUMP) fell harder.
-
-6/ On X the takes split three ways: "a reset, not the end", "gridlock protects us from extremes", and "Warren's anti-crypto army is coming", with extra worry about scrutiny of AI infra as miners pivot to AI data centres.
-
-7/ My take: regulation isn't dead, it's slower and stricter. Compliance becomes part of the pitch, nobody should be promising "clarity soon", and political tokens carry political risk.
-
-Source on the Super PAC spend: Cointelegraph (link)
+What's your take? 👇
 
 ## Before posting — verify
 

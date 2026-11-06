@@ -22,7 +22,7 @@ On X, the takes split three ways. It's a reset, not the end. Gridlock protects u
 
 My take? Regulation isn't dead. It's slower, and stricter. Compliance becomes part of the pitch. Nobody should be promising clarity soon. And political tokens carry political risk.
 
-Full breakdown in the thread below.
+So what's your take? Tell me in the replies.
 
 ## Same text by scene (timing in the video)
 
@@ -37,7 +37,7 @@ Full breakdown in the thread below.
 | 0:40–0:49 | Market | The market couldn't decide. A dip during the count, Bitcoin back above seventy-eight thousand on Wednesday, then a heavier sell-off. Trump-linked tokens fell the hardest. | 26 |
 | 0:49–0:59 | Takes | On X, the takes split three ways. It's a reset, not the end. Gridlock protects us from extremes. Or: Warren's anti-crypto army is coming. | 24 |
 | 0:59–1:08 | My take | My take? Regulation isn't dead. It's slower, and stricter. Compliance becomes part of the pitch. Nobody should be promising clarity soon. And political tokens carry political risk. | 28 |
-| 1:08–1:13 | Outro | Full breakdown in the thread below. | 6 |
+| 1:08–1:13 | Outro | So what's your take? Tell me in the replies. | 9 |
 
 ## ElevenLabs tips
 
