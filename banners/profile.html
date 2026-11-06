@@ -1,0 +1,52 @@
+<title>mesokla Profile Preview</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@800;900&family=Manrope:wght@500;600;700;800&display=swap">
+<style>
+/* Layout: X dark-mode look. Each banner shown twice on a real profile mock (recommended + alternative avatar), then the full grid of avatar treatments. */
+:root{--leaf:#A6B8A0;--violet:#8B729C;--crimson:#E20942;--display:"Montserrat",system-ui,sans-serif;--text:"Manrope",system-ui,sans-serif;color-scheme:dark}
+*{box-sizing:border-box}
+body{margin:0;background:#000;color:#E7E9EA;font-family:var(--text);font-weight:600;line-height:1.5}
+.wrap{max-width:1200px;margin:0 auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));padding-block:56px 80px}
+.label{font-weight:800;font-size:13px;letter-spacing:.18em;text-transform:uppercase;color:var(--leaf)}
+h1{font-family:var(--display);font-weight:900;text-transform:uppercase;font-size:clamp(40px,7vw,84px);line-height:.92;margin:12px 0 16px;color:var(--crimson)}
+h2{font-family:var(--display);font-weight:900;text-transform:uppercase;font-size:clamp(24px,3.4vw,36px);line-height:1;margin:0 0 14px;color:var(--leaf)}
+.lead{max-width:66ch;margin:0 0 20px;color:#B9BEC2}
+.tips{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px;margin:28px 0 48px}
+.tip{border:1px solid #2F3336;border-radius:14px;padding:18px}
+.tip b{display:block;font-family:var(--display);font-weight:900;text-transform:uppercase;color:var(--crimson);margin-bottom:6px}
+.tip p{margin:0;font-size:15px;color:#B9BEC2}
+.row{margin-bottom:48px}
+.pair{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px}
+figure{margin:0;min-width:0}
+figure img{width:100%;display:block;border-radius:14px;border:1px solid #2F3336}
+figcaption{margin-top:8px;font-size:14px;color:#B9BEC2}
+figcaption b{color:#E7E9EA}
+.avs{display:grid;grid-template-columns:repeat(auto-fill,minmax(180px,1fr));gap:22px;margin-top:20px}
+.av img{border:0;border-radius:50%}
+.av figcaption b{display:block;font-family:var(--display);font-weight:900;text-transform:uppercase;color:var(--leaf);font-size:16px}
+@media (max-width:760px){.pair,.tips{grid-template-columns:1fr}}
+</style>
+<div class="wrap">
+  <div class="label">mesokla · profile preview</div>
+  <h1>Banner + avatar</h1>
+  <p class="lead">The five diagonal banners on your real profile, each with the avatar treatment that fits it best and one alternative. All avatar versions are made from your current photo; with a new photo they would look even cleaner.</p>
+  <div class="tips">
+    <div class="tip"><b>Easiest win</b><p>A thick ring in a brand colour. One move, and the photo instantly belongs to the banner. Leaf ring on crimson or violet banners, crimson ring on leaf.</p></div>
+    <div class="tip"><b>Most designed</b><p>Duotone: the photo recoloured into the palette. Looks like a brand asset and matches every banner. Best with a high-contrast photo.</p></div>
+    <div class="tip"><b>If you reshoot</b><p>Shoot against a plain wall, or cut out the background and put yourself on flat leaf or violet. Wear something in violet or crimson, and you won’t need a ring at all.</p></div>
+  </div>
+  <section class="row"><h2>D1 · Leaf</h2><div class="pair">
+<figure><img src="mock/diag-leaf--av-ring-crimson.png" alt="D1 · Leaf banner with crimson ring avatar"><figcaption><b>Recommended</b> · crimson ring</figcaption></figure>
+<figure><img src="mock/diag-leaf--av-duotone-violet.png" alt="D1 · Leaf banner with violet duotone avatar"><figcaption><b>Alternative</b> · violet duotone</figcaption></figure></div></section><section class="row"><h2>D2 · Crimson</h2><div class="pair">
+<figure><img src="mock/diag-crimson--av-ring-leaf.png" alt="D2 · Crimson banner with leaf ring avatar"><figcaption><b>Recommended</b> · leaf ring</figcaption></figure>
+<figure><img src="mock/diag-crimson--av-duotone-crimson.png" alt="D2 · Crimson banner with crimson duotone avatar"><figcaption><b>Alternative</b> · crimson duotone</figcaption></figure></div></section><section class="row"><h2>D3 · Violet</h2><div class="pair">
+<figure><img src="mock/diag-violet--av-duotone-ring.png" alt="D3 · Violet banner with duotone + leaf ring avatar"><figcaption><b>Recommended</b> · duotone + leaf ring</figcaption></figure>
+<figure><img src="mock/diag-violet--av-ring-leaf.png" alt="D3 · Violet banner with leaf ring avatar"><figcaption><b>Alternative</b> · leaf ring</figcaption></figure></div></section><section class="row"><h2>D4 · Leaf + trails</h2><div class="pair">
+<figure><img src="mock/diag-leaf-wing--av-ring-violet.png" alt="D4 · Leaf + trails banner with violet ring avatar"><figcaption><b>Recommended</b> · violet ring</figcaption></figure>
+<figure><img src="mock/diag-leaf-wing--av-badge-leaf.png" alt="D4 · Leaf + trails banner with leaf badge with moth avatar"><figcaption><b>Alternative</b> · leaf badge with moth</figcaption></figure></div></section><section class="row"><h2>D5 · Violet + trails</h2><div class="pair">
+<figure><img src="mock/diag-violet-contour--av-duotone-violet.png" alt="D5 · Violet + trails banner with violet duotone avatar"><figcaption><b>Recommended</b> · violet duotone</figcaption></figure>
+<figure><img src="mock/diag-violet-contour--av-ring-crimson.png" alt="D5 · Violet + trails banner with crimson ring avatar"><figcaption><b>Alternative</b> · crimson ring</figcaption></figure></div></section>
+  <h2 style="margin-top:24px">All avatar treatments</h2>
+  <p class="lead">400×400, ready to upload. X crops to a circle.</p>
+  <div class="avs"><figure class="av"><img src="avatar/av-original.png" alt="Original avatar"><figcaption><b>Original</b>Your current photo, untouched. Works, but its colours are not from the palette.</figcaption></figure><figure class="av"><img src="avatar/av-ring-crimson.png" alt="Crimson ring avatar"><figcaption><b>Crimson ring</b>Thick crimson ring. Pops on leaf banners, ties the photo to the brand.</figcaption></figure><figure class="av"><img src="avatar/av-ring-leaf.png" alt="Leaf ring avatar"><figcaption><b>Leaf ring</b>Soft leaf ring. Best on crimson and violet banners.</figcaption></figure><figure class="av"><img src="avatar/av-ring-violet.png" alt="Violet ring avatar"><figcaption><b>Violet ring</b>Violet ring, quiet and elegant on leaf.</figcaption></figure><figure class="av"><img src="avatar/av-duotone-violet.png" alt="Violet duotone avatar"><figcaption><b>Violet duotone</b>Photo recoloured to the palette: deep violet shadows, light leaf highlights. Most “designed”.</figcaption></figure><figure class="av"><img src="avatar/av-duotone-crimson.png" alt="Crimson duotone avatar"><figcaption><b>Crimson duotone</b>Bold crimson duotone. Strong, use for campaign periods.</figcaption></figure><figure class="av"><img src="avatar/av-duotone-ring.png" alt="Duotone + ring avatar"><figcaption><b>Duotone + ring</b>Violet duotone inside a leaf ring. The most harmonious with any banner.</figcaption></figure><figure class="av"><img src="avatar/av-badge-leaf.png" alt="Badge + moth avatar"><figcaption><b>Badge + moth</b>Photo inside a leaf disc with the line moth on the edge. The moth gets thin at small sizes.</figcaption></figure><figure class="av"><img src="avatar/av-badge-violet.png" alt="Violet badge avatar"><figcaption><b>Violet badge</b>Same badge on violet with a leaf moth.</figcaption></figure><figure class="av"><img src="avatar/av-tint-violet.png" alt="Violet tint avatar"><figcaption><b>Violet tint</b>Light violet wash over the original. Subtle, keeps natural skin tones.</figcaption></figure></div>
+</div>
