@@ -76,7 +76,7 @@ def scene(t0,bg,inner,fg,sigcol,d='l'):
     if t0>0: EV['wipe'].append(round(t0,3))
     fr={'l':'inset(0 100% 0 0)','r':'inset(0 0 0 100%)','t':'inset(0 0 100% 0)','b':'inset(100% 0 0 0)'}[d]
     stl=kf([(0,f'clip-path:{fr};visibility:hidden'),(t0-.02,f'clip-path:{fr};visibility:hidden'),(t0,f'clip-path:{fr};visibility:visible'),(t0+.6,'clip-path:inset(0 0 0 0);visibility:visible')]) if t0>0 else ''
-    scenes.append(f'<section class="sc" style="background:{bg};color:{fg};{stl}">{inner}<div class="sig" style="color:{fg}"><img class="sm" src="{B}/moth/moth-front-{sigcol}.svg" alt="">MESOKLA</div><div class="hd" style="color:{fg}">@mesokla</div></section>')
+    scenes.append(f'<section class="sc" style="background:{bg};color:{fg};{stl}">{inner}<div class="sig" style="color:{fg}"><img class="sm" src="{A}moth-front-{sigcol}-bold.svg" alt="">MESOKLA</div></section>')
 K=lambda txt,t,col=None,pos='':f'<div class="k" style="{("color:"+col+";") if col else ""}{fade(t)}{pos}">{txt}</div>'
 
 # ---- A · intro + hook (crimson) ----
@@ -188,7 +188,7 @@ html,body{{width:1920px;height:1080px;overflow:hidden;background:{C}}}
 .hl{{background-image:linear-gradient(var(--b),var(--b));background-repeat:no-repeat;background-position:0 0;padding:0 .12em;box-decoration-break:clone;-webkit-box-decoration-break:clone}}
 .sub{{margin-top:26px;font-size:42px;font-weight:700;line-height:1.3}}
 .sig{{position:absolute;left:120px;bottom:56px;display:flex;align-items:center;gap:14px;font-family:Montserrat;font-weight:900;font-size:36px;letter-spacing:.04em}}
-.sm{{height:54px}} .hd{{position:absolute;right:120px;bottom:64px;font-weight:800;font-size:30px}}
+.sm{{height:64px}} .hd{{position:absolute;right:120px;bottom:64px;font-weight:800;font-size:30px}}
 .trail{{position:absolute;inset:0}} .dot{{position:absolute;left:0;top:0;width:14px;height:14px;margin:-7px 0 0 -7px;border-radius:50%;background:{L};offset-rotate:0deg}}
 .flyer{{position:absolute;left:0;top:0;width:340px;margin:-150px 0 0 -170px;offset-anchor:center}}
 .moth{{width:100%;height:auto;display:block;overflow:visible}}
