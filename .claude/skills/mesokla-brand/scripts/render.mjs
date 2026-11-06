@@ -1,6 +1,6 @@
 // Render a template to PNG with custom text.
 // Usage: node scripts/render.mjs <template> <out.png> [key=value ...]
-//   template: banner | quote | thread | sense-mess | list | collab | stack  (or a path to .html)
+//   template: banner | quote | thread | do-dont | list | collab | stack  (or a path to .html)
 //   keys: theme=leaf|violet|crimson (banner also: stripes), text/title/... ("|" = new line / new item, *word* = highlight)
 import { createRequire } from 'node:module';
 const { chromium } = createRequire(import.meta.url)('playwright'); // needs playwright: npm i -D playwright (or a global install)

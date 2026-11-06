@@ -5,7 +5,9 @@ description: The @mesokla visual identity for X/Twitter — three colours only (
 
 # mesokla brand
 
-Owner: @mesokla, web3 marketer at @solus_group, Ukraine. Bio line: "smtm sense, smtm mess".
+Owner: @mesokla, web3 marketer at @solus_group, Ukraine.
+**Language:** visuals and examples are in Ukrainian by default (template defaults are Ukrainian); use English only if the user asks.
+**No tagline:** never put "smtm sense / smtm mess" (or any slogan) under the wordmark — the owner removed it. A new tagline may come later; leave the slot empty until then.
 Style in one line: **flat blocks of three colours, big bold uppercase type, nothing else.**
 Visual reference: `brandbook.html`. Ready renders: `out/`.
 
@@ -59,20 +61,21 @@ Common keys: `theme`, `kicker` (top-left label), `tag` (top-right pill), `handle
 | `banner` | 1500×500 | `theme` leaf/violet/crimson/stripes, `moth` trail/flight/front/none (default trail), `name`, `tag`. Avatar covers bottom-left ~330×170 — keep empty |
 | `quote` | 1600×900 | `text` |
 | `thread` | 1600×900, violet | `title`, `sub`, `count` ("1 / 9") |
-| `sense-mess` | 1600×900 | `sense`, `mess` (2–4 items each, `|`-separated, ≤6 words) |
+| `do-dont` | 1600×900 | `yes`, `no` (2–4 items each, `|`-separated, ≤6 words); headings `a`/`b` (default «так» / «не так»), labels `la`/`lb` |
 | `list` | 1600×900 | `title`, `items` (3–6, `|`-separated) |
 | `collab` | 1600×900 | `partner`, `what`, `date` |
 | `stack` | 1080×1350 | `t1`, `t2`, `t3` (one idea per colour band), `kicker` |
-| `intro` | 1600×900, animated 4s | `name`, `tag` — render with `scripts/video.mjs` |
+| `intro` | 1600×900, animated 4.5s | `v` fly / draw / zoom, `theme` — render with `scripts/video.mjs` |
 
 Other sizes: `size=WxH` (e.g. article cover `size=1500x600`).
-Video: `node scripts/video.mjs templates/intro.html out/intro.mp4 4 1600 900 30`. Animated templates must use CSS keyframes only so they can be scrubbed frame by frame.
+Video: `node scripts/video.mjs "templates/intro.html?v=fly&theme=crimson" out/intro.mp4 4.5`.
+Intro scenarios: **fly** (moth flies in along a dotted trail and lands above MESOKLA), **draw** (the line draws the moth, it flaps and rises into the lockup), **zoom** (starts inside the wing contours and pulls back). Vary scenario × theme between videos so openings differ; the owner likes e.g. crimson background with the light moth. Regenerate the template with `python3 scripts/gen_intro.py`. No colour-stripe intros (rejected: looks like a flag). Animated templates must use CSS keyframes only so they can be scrubbed frame by frame.
 
 New template: an HTML file in `templates/` linking `../brand.css`, using `.canvas`, `.frame/.top/.bottom`, `.display`, `.label`, `.pill`, `.sig`, plus `<script src="fill.js">`.
 
 ## Pillars → theme
 
-Sense (tools, frameworks) → `leaf` · Threads & collabs → `violet` · Mess (hot takes, fails) → `crimson`.
+Користь (tools, frameworks) → `leaf` · Треди й колаби → `violet` · Гострі думки (hot takes, fails) → `crimson`.
 
 ## Workflow
 

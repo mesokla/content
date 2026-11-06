@@ -1,18 +1,54 @@
-<!doctype html><html><head><meta charset="utf-8"><title>Intro · animated · 1600×900 · 4s</title>
+<!doctype html><html><head><meta charset="utf-8"><title>Intro · animated · 1600×900 · 4.5s</title>
 <link rel="stylesheet" href="../brand.css">
 <style>
-/* CSS keyframes only, so scripts/video.mjs can scrub frame by frame. 4s total. */
-.bar{position:absolute;left:0;right:0;height:34%;animation:4s cubic-bezier(.7,0,.2,1) both}
-.bar.v{top:0;background:var(--violet);animation-name:v}
-.bar.c{top:33%;background:var(--crimson);animation-name:c}
-@keyframes v{0%{transform:translateX(-100%)}15%,55%{transform:none}75%,100%{transform:translateY(-100%)}}
-@keyframes c{0%,8%{transform:translateX(100%)}23%,55%{transform:none}75%,100%{transform:translateX(-100%)}}
-.word{position:absolute;inset:0;display:grid;place-items:center;text-align:center}
-.word .display{font-size:230px;letter-spacing:-.025em;animation:w 4s cubic-bezier(.2,.8,.2,1) both}
-@keyframes w{0%,62%{opacity:0;transform:translateY(60px)}80%,100%{opacity:1;transform:none}}
-.tag{margin-top:28px;color:var(--sub);font-size:28px;letter-spacing:.34em;animation:t 4s both}
-@keyframes t{0%,72%{opacity:0}88%,100%{opacity:1}}
-</style></head><body><div class="canvas">
-<div class="word"><div><div class="display" data-f="name">mesokla</div><div class="tag label" data-f="tag">smtm sense / smtm mess</div></div></div>
-<div class="bar v"></div><div class="bar c"></div>
-</div><script src="fill.js"></script></body></html>
+/* v=fly | draw | zoom ; theme=leaf | violet | crimson. CSS keyframes only so scripts/video.mjs can scrub it. 4.5s. */
+body{--ln:var(--crimson);--ln2:var(--violet);--ln2o:1}
+body[data-theme=violet],body[data-theme=crimson]{--ln:var(--leaf);--ln2:var(--leaf);--ln2o:.55}
+.m{position:absolute;left:0;top:0;width:330px;height:293px;margin:-146px 0 0 -165px}
+.moth{width:100%;height:100%;display:block;overflow:visible}
+.tilt{width:100%;height:100%}
+.wl,.wr{transform-box:view-box;transform-origin:200px 210px}
+.word{position:absolute;left:0;right:0;top:530px;text-align:center}
+.word .display{font-size:150px;letter-spacing:-.02em;color:var(--fg)}
+.word span{display:inline-block;animation:letter 4.5s cubic-bezier(.2,.8,.2,1) both}
+.trail{position:absolute;inset:0;width:100%;height:100%;display:none}
+.trail circle{fill:var(--ln);animation:dot .25s ease-out both}
+@keyframes dot{0%{opacity:0;transform:scale(0)}100%{opacity:1;transform:none}}
+.trail{animation:trailout 4.5s both}
+@keyframes trailout{0%,68%{opacity:1}82%,100%{opacity:0}}
+.trail circle{transform-box:fill-box;transform-origin:center}
+@keyframes flapfast{0%,100%{transform:scaleX(1)}50%{transform:scaleX(.18)}}
+@keyframes flapslow{0%,40%,100%{transform:scaleX(1)}65%{transform:scaleX(.25)}}
+
+/* FLY: moth flies in along a dotted trail, lands above the wordmark */
+body[data-v=fly] .trail{display:block}
+body[data-v=fly] .m{offset-path:path("M-160 1040C260 720 260 300 560 380C760 450 900 330 800 300");offset-rotate:0deg;animation:fly 4.5s both}
+@keyframes fly{0%{offset-distance:0%;animation-timing-function:cubic-bezier(.25,.6,.35,1)}57.8%,100%{offset-distance:100%}}
+body[data-v=fly] .tilt{animation:tilt 4.5s both}
+@keyframes tilt{0%{transform:rotate(28deg) scale(.55)}30%{transform:rotate(-14deg) scale(.8)}57.8%,100%{transform:none}}
+body[data-v=fly] .wl,body[data-v=fly] .wr{animation:flapfast .26s ease-in-out 0s 10,flapslow 1.7s ease-in-out 2.6s infinite}
+body[data-v=fly] .word span{--d:2.5s}
+
+/* DRAW: the line draws itself, wings flap, moth rises into the lockup */
+body[data-v=draw] .m{left:800px;top:300px;animation:rise 4.5s both}
+@keyframes rise{0%,52%{transform:translateY(150px) scale(1.9)}70%,100%{transform:none}}
+body[data-v=draw] .dl{stroke-dasharray:1 1;animation:draw 4.5s ease-in-out both}
+@keyframes draw{0%{stroke-dashoffset:1}36%,100%{stroke-dashoffset:0}}
+body[data-v=draw] .spot{animation:pop 4.5s both}
+@keyframes pop{0%,34%{opacity:0}40%,100%{opacity:1}}
+body[data-v=draw] .wl,body[data-v=draw] .wr{animation:flapslow .9s ease-in-out 1.65s 2}
+body[data-v=draw] .word span{--d:3.0s}
+
+/* ZOOM: starts inside the wing contours, pulls back to reveal the moth */
+body[data-v=zoom] .m{left:800px;top:300px;animation:zoom 4.5s both}
+@keyframes zoom{0%{transform:translate(1200px,700px) scale(9) rotate(-20deg)}10%{transform:translate(1100px,640px) scale(8) rotate(-16deg);animation-timing-function:cubic-bezier(.6,0,.2,1)}52%,100%{transform:none}}
+body[data-v=zoom] .wl,body[data-v=zoom] .wr{animation:flapslow 1.5s ease-in-out 2.3s infinite}
+body[data-v=zoom] .word span{--d:2.6s}
+
+@keyframes letter{0%{opacity:0;transform:translateY(50px)}100%{opacity:1;transform:none}}
+.word span{animation:letter .7s cubic-bezier(.2,.8,.2,1) both;animation-delay:calc(var(--d,2.5s) + var(--i)*.06s)}
+</style></head><body data-v="fly" data-theme="crimson"><div class="canvas">
+<svg class="trail" viewBox="0 0 1600 900"><circle cx="-117.4" cy="1006.1" r="6" style="animation-delay:0.040s"/><circle cx="-80.5" cy="974.0" r="6" style="animation-delay:0.080s"/><circle cx="-43.3" cy="939.1" r="6" style="animation-delay:0.119s"/><circle cx="-6.3" cy="901.4" r="6" style="animation-delay:0.158s"/><circle cx="28.0" cy="863.5" r="6" style="animation-delay:0.197s"/><circle cx="59.8" cy="825.7" r="6" style="animation-delay:0.236s"/><circle cx="91.3" cy="785.6" r="6" style="animation-delay:0.276s"/><circle cx="122.3" cy="743.6" r="6" style="animation-delay:0.315s"/><circle cx="151.0" cy="702.5" r="6" style="animation-delay:0.356s"/><circle cx="179.4" cy="660.2" r="6" style="animation-delay:0.399s"/><circle cx="207.5" cy="617.2" r="6" style="animation-delay:0.441s"/><circle cx="235.5" cy="574.4" r="6" style="animation-delay:0.484s"/><circle cx="263.7" cy="532.4" r="6" style="animation-delay:0.531s"/><circle cx="294.0" cy="490.7" r="6" style="animation-delay:0.578s"/><circle cx="325.7" cy="452.6" r="6" style="animation-delay:0.628s"/><circle cx="362.8" cy="417.2" r="6" style="animation-delay:0.681s"/><circle cx="405.6" cy="389.4" r="6" style="animation-delay:0.738s"/><circle cx="454.9" cy="373.1" r="6" style="animation-delay:0.800s"/><circle cx="505.1" cy="370.6" r="6" style="animation-delay:0.868s"/><circle cx="555.5" cy="378.8" r="6" style="animation-delay:0.943s"/><circle cx="603.9" cy="392.7" r="6" style="animation-delay:1.028s"/><circle cx="654.6" cy="400.5" r="6" style="animation-delay:1.124s"/><circle cx="705.3" cy="400.7" r="6" style="animation-delay:1.241s"/><circle cx="755.9" cy="391.8" r="6" style="animation-delay:1.378s"/><circle cx="802.5" cy="371.7" r="6" style="animation-delay:1.559s"/></svg>
+<div class="m"><div class="tilt"><svg class="moth" viewBox="20 40 360 320" fill="none" stroke-linecap="round" stroke-linejoin="round"><g class="wl"><path class="dl" pathLength="1" d="M196 196C160 120 100 70 40 66C22 100 30 170 76 204C116 226 168 214 196 206Z" stroke="var(--ln)" stroke-width="3.6" stroke-opacity="1"/><path class="dl" pathLength="1" d="M196 214C164 222 112 244 96 292C98 330 142 342 170 306C184 286 192 252 196 230Z" stroke="var(--ln)" stroke-width="3.6" stroke-opacity="1"/><g transform="translate(196 206) scale(.7) translate(-196 -206)"><path class="dl" pathLength="1" d="M196 196C160 120 100 70 40 66C22 100 30 170 76 204C116 226 168 214 196 206Z" stroke="var(--ln2)" stroke-width="2.57" stroke-opacity="var(--ln2o)"/><path class="dl" pathLength="1" d="M196 214C164 222 112 244 96 292C98 330 142 342 170 306C184 286 192 252 196 230Z" stroke="var(--ln2)" stroke-width="2.57" stroke-opacity="var(--ln2o)"/></g><circle class="spot" cx="92" cy="136" r="5.5" fill="var(--ln)"/></g><g class="wr"><g transform="translate(400 0) scale(-1 1)"><path class="dl" pathLength="1" d="M196 196C160 120 100 70 40 66C22 100 30 170 76 204C116 226 168 214 196 206Z" stroke="var(--ln)" stroke-width="3.6" stroke-opacity="1"/><path class="dl" pathLength="1" d="M196 214C164 222 112 244 96 292C98 330 142 342 170 306C184 286 192 252 196 230Z" stroke="var(--ln)" stroke-width="3.6" stroke-opacity="1"/><g transform="translate(196 206) scale(.7) translate(-196 -206)"><path class="dl" pathLength="1" d="M196 196C160 120 100 70 40 66C22 100 30 170 76 204C116 226 168 214 196 206Z" stroke="var(--ln2)" stroke-width="2.57" stroke-opacity="var(--ln2o)"/><path class="dl" pathLength="1" d="M196 214C164 222 112 244 96 292C98 330 142 342 170 306C184 286 192 252 196 230Z" stroke="var(--ln2)" stroke-width="2.57" stroke-opacity="var(--ln2o)"/></g><circle class="spot" cx="92" cy="136" r="5.5" fill="var(--ln)"/></g></g><path class="dl" pathLength="1" d="M195 150C184 112 166 92 140 80" stroke="var(--ln)" stroke-width="3.6"/><circle class="spot" cx="140" cy="80" r="4.5" stroke="var(--ln)" stroke-width="3.6"/><g transform="translate(400 0) scale(-1 1)"><path class="dl" pathLength="1" d="M195 150C184 112 166 92 140 80" stroke="var(--ln)" stroke-width="3.6"/><circle class="spot" cx="140" cy="80" r="4.5" stroke="var(--ln)" stroke-width="3.6"/></g><ellipse class="dl" pathLength="1" cx="200" cy="222" rx="9" ry="56" stroke="var(--ln)" stroke-width="3.6"/></svg></div></div>
+<div class="word"><div class="display"><span style="--i:0">m</span><span style="--i:1">e</span><span style="--i:2">s</span><span style="--i:3">o</span><span style="--i:4">k</span><span style="--i:5">l</span><span style="--i:6">a</span></div></div>
+</div><script src="fill.js"></script><script>const v=new URLSearchParams(location.search).get('v');if(v)document.body.dataset.v=v;</script></body></html>

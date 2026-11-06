@@ -94,6 +94,8 @@ figcaption b{font-family:var(--display);font-weight:900;text-transform:uppercase
 .rules2 ul{margin:8px 0 0;padding-left:20px}
 @media (max-width:860px){.mothhero,.rules2{grid-template-columns:1fr}.els{grid-template-columns:repeat(2,minmax(0,1fr))}.tiles{grid-template-columns:1fr}}
 @media (prefers-reduced-motion:reduce){.flap .wl,.flap .wr{animation:none}}
+.vids{grid-template-columns:repeat(2,minmax(0,1fr));margin-top:24px}
+@media (max-width:860px){.vids{grid-template-columns:1fr}}
 footer{padding-block:40px;background:var(--crimson);color:var(--leaf)}
 
 @media (max-width:860px){
@@ -103,9 +105,8 @@ footer{padding-block:40px;background:var(--crimson);color:var(--leaf)}
 </style>
 
 <header class="s-leaf hero"><div class="wrap">
-  <div class="label">brandbook v3 · x / twitter</div>
+  <div class="label">brandbook v4 · x / twitter</div>
   <h1 style="margin-top:22px">mesokla</h1>
-  <div class="label tag">smtm sense / smtm mess</div>
   <p class="lead">Три кольори з твого референсу і більше нічого. Великий жирний шрифт великими літерами, рівні плашки кольору, жодних текстур чи декору. Простота тут і є стиль.</p>
 </div></header>
 
@@ -115,14 +116,14 @@ footer{padding-block:40px;background:var(--crimson);color:var(--leaf)}
   <h2>Тільки три кольори</h2>
   <p class="lead">Ні білого, ні чорного. Один з трьох кольорів стає фоном, другий іде на текст, третій на одну плашку-виділення.</p>
   <div class="cards">
-    <div class="card c-leaf"><div><div class="n">Leaf Skin</div><div class="r">Основний фон профілю і корисних постів.</div></div><div class="h">#A6B8A0</div></div>
-    <div class="card c-violet" style="outline:3px solid var(--leaf);outline-offset:-3px"><div><div class="n">Muted Violet</div><div class="r">Треди, анонси, колаби. Виділення на листовому фоні.</div></div><div class="h">#8B729C</div></div>
-    <div class="card c-crimson"><div><div class="n">Electric Crimson</div><div class="r">Головний текст на листовому фоні, хот-тейки, акценти.</div></div><div class="h">#E20942</div></div>
+    <div class="card c-leaf"><div><div class="n">Шавлія</div><div class="r">Основний фон профілю і корисних постів.</div></div><div class="h">#A6B8A0</div></div>
+    <div class="card c-violet" style="outline:3px solid var(--leaf);outline-offset:-3px"><div><div class="n">Фіалка</div><div class="r">Треди, анонси, колаби. Виділення на листовому фоні.</div></div><div class="h">#8B729C</div></div>
+    <div class="card c-crimson"><div><div class="n">Малина</div><div class="r">Головний текст на листовому фоні, хот-тейки, акценти.</div></div><div class="h">#E20942</div></div>
   </div>
   <div class="grid pairs">
-    <div class="pair c-leaf" style="outline:none">Leaf<small style="color:var(--violet)">фон leaf · текст crimson · виділення violet</small></div>
-    <div class="pair c-violet">Violet<small>фон violet · текст leaf · виділення crimson</small></div>
-    <div class="pair c-crimson">Crimson<small>фон crimson · текст leaf · виділення violet</small></div>
+    <div class="pair c-leaf" style="outline:none">Шавлія<small style="color:var(--violet)">фон шавлія · текст малина · виділення фіалка</small></div>
+    <div class="pair c-violet">Фіалка<small>фон фіалка · текст шавлія · виділення малина</small></div>
+    <div class="pair c-crimson">Малина<small>фон малина · текст шавлія · виділення фіалка</small></div>
   </div>
   <p class="never">Ніколи: малиновий текст на фіолетовому і фіолетовий на малиновому, бо ці кольори зливаються. Текст завжди листовий або на листовому.</p>
 </div></section>
@@ -131,8 +132,8 @@ footer{padding-block:40px;background:var(--crimson);color:var(--leaf)}
   <div class="label">02 · шрифти</div>
   <h2>Жирно і великими</h2>
   <div class="grid type" style="margin-top:28px">
-    <div class="tcard"><div class="spec" style="color:var(--violet)">Заголовки · Montserrat Black 900 · капс</div><div style="font-family:var(--display);font-weight:900;font-size:clamp(44px,7vw,84px);line-height:.92;text-transform:uppercase">Hook first.<br>Then <span style="background:var(--violet);color:var(--leaf);padding:0 .12em">value</span>.</div><p style="font-size:15px">Заголовки, вордмарк, головна думка посту. Міжрядковий 0.92–1, без курсиву. Одне слово можна виділити плашкою.</p></div>
-    <div class="tcard"><div class="spec" style="color:var(--violet)">Дрібний текст · Manrope 600–800</div><div style="font-size:26px;font-weight:700;line-height:1.3">Post when your audience is awake.</div><div class="label" style="color:var(--violet)">Thread · 1 / 9</div><p style="font-size:15px">Пункти списків, підписи, хендл. Для кікерів капс з розрядкою.</p></div>
+    <div class="tcard"><div class="spec" style="color:var(--violet)">Заголовки · Montserrat Black 900 · капс</div><div style="font-family:var(--display);font-weight:900;font-size:clamp(44px,7vw,84px);line-height:.92;text-transform:uppercase">Спершу хук.<br>Потім <span style="background:var(--violet);color:var(--leaf);padding:0 .12em">користь</span>.</div><p style="font-size:15px">Заголовки, вордмарк, головна думка посту. Міжрядковий 0.92–1, без курсиву. Одне слово можна виділити плашкою.</p></div>
+    <div class="tcard"><div class="spec" style="color:var(--violet)">Дрібний текст · Manrope 600–800</div><div style="font-size:26px;font-weight:700;line-height:1.3">Пости, коли аудиторія не спить.</div><div class="label" style="color:var(--violet)">Тред · 1 / 9</div><p style="font-size:15px">Пункти списків, підписи, хендл. Для кікерів капс з розрядкою.</p></div>
   </div>
 </div></section>
 
@@ -143,7 +144,7 @@ footer{padding-block:40px;background:var(--crimson);color:var(--leaf)}
   <div class="mothhero"><div class="big"><svg class="flap" aria-hidden="true" viewBox="20 40 360 320"><g stroke="#E20942" stroke-width="3.6" fill="none" stroke-linecap="round" stroke-linejoin="round"><g class="wl"><path d="M196 196C160 120 100 70 40 66C22 100 30 170 76 204C116 226 168 214 196 206Z"/><path d="M196 214C164 222 112 244 96 292C98 330 142 342 170 306C184 286 192 252 196 230Z"/><g transform="translate(196 206) scale(.7) translate(-196 -206)" stroke="#8B729C" stroke-opacity="1" stroke-width="2.57"><path d="M196 196C160 120 100 70 40 66C22 100 30 170 76 204C116 226 168 214 196 206Z"/><path d="M196 214C164 222 112 244 96 292C98 330 142 342 170 306C184 286 192 252 196 230Z"/></g><circle cx="92" cy="136" r="5.5" fill="#E20942" stroke="none"/></g><g class="wr"><g transform="translate(400 0) scale(-1 1)"><path d="M196 196C160 120 100 70 40 66C22 100 30 170 76 204C116 226 168 214 196 206Z"/><path d="M196 214C164 222 112 244 96 292C98 330 142 342 170 306C184 286 192 252 196 230Z"/><g transform="translate(196 206) scale(.7) translate(-196 -206)" stroke="#8B729C" stroke-opacity="1" stroke-width="2.57"><path d="M196 196C160 120 100 70 40 66C22 100 30 170 76 204C116 226 168 214 196 206Z"/><path d="M196 214C164 222 112 244 96 292C98 330 142 342 170 306C184 286 192 252 196 230Z"/></g><circle cx="92" cy="136" r="5.5" fill="#E20942" stroke="none"/></g></g><path d="M195 150C184 112 166 92 140 80"/><circle cx="140" cy="80" r="4.5"/><g transform="translate(400 0) scale(-1 1)"><path d="M195 150C184 112 166 92 140 80"/><circle cx="140" cy="80" r="4.5"/></g><ellipse cx="200" cy="222" rx="9" ry="56"/></g></svg></div>
     <div><h3>Три пози</h3><p><b>Front</b> для знаку, аватарки й підпису. <b>Flight</b> для руху у візуалах і стікерах. <b>Trail</b> (політ із пунктирним слідом) для банера та анонсів.</p>
     <p style="margin-top:14px">Колір лінії залежить від фону: на листовому малинова з фіолетовим контуром, на фіолетовому й малиновому листова.</p></div></div>
-  <div class="tiles"><div class="tile t-l"><img src="moth/moth-front-crimson.svg" alt="Метелик front, лінія crimson" loading="lazy"><span class="cap">crimson line</span></div><div class="tile t-v"><img src="moth/moth-front-leaf.svg" alt="Метелик front, лінія leaf" loading="lazy"><span class="cap">leaf line</span></div><div class="tile t-c"><img src="moth/moth-front-leaf.svg" alt="Метелик front, лінія leaf" loading="lazy"><span class="cap">leaf line</span></div></div>
+  <div class="tiles"><div class="tile t-l"><img src="moth/moth-front-crimson.svg" alt="Метелик front, лінія crimson" loading="lazy"><span class="cap">лінія малина</span></div><div class="tile t-v"><img src="moth/moth-front-leaf.svg" alt="Метелик front, лінія leaf" loading="lazy"><span class="cap">лінія шавлія</span></div><div class="tile t-c"><img src="moth/moth-front-leaf.svg" alt="Метелик front, лінія leaf" loading="lazy"><span class="cap">leaf line</span></div></div>
   <div class="tiles"><div class="tile t-l"><img src="moth/moth-flight-crimson.svg" alt="Метелик flight, лінія crimson" loading="lazy"><span class="cap">crimson line</span></div><div class="tile t-v"><img src="moth/moth-flight-leaf.svg" alt="Метелик flight, лінія leaf" loading="lazy"><span class="cap">leaf line</span></div><div class="tile t-c"><img src="moth/moth-flight-leaf.svg" alt="Метелик flight, лінія leaf" loading="lazy"><span class="cap">leaf line</span></div></div>
   <div class="tiles"><div class="tile t-l"><img src="moth/moth-trail-crimson.svg" alt="Метелик trail, лінія crimson" loading="lazy"><span class="cap">crimson line</span></div><div class="tile t-v"><img src="moth/moth-trail-leaf.svg" alt="Метелик trail, лінія leaf" loading="lazy"><span class="cap">leaf line</span></div><div class="tile t-c"><img src="moth/moth-trail-leaf.svg" alt="Метелик trail, лінія leaf" loading="lazy"><span class="cap">leaf line</span></div></div>
   <h3 style="margin-top:44px">Підпис</h3>
@@ -174,11 +175,10 @@ footer{padding-block:40px;background:var(--crimson);color:var(--leaf)}
     <figure><img class="shot" src="out/banner-leaf.png" alt="Банер Leaf: малиновий напис MESOKLA на листовому фоні" loading="lazy"><figcaption><b>Leaf</b> · основний</figcaption></figure>
     <figure><img class="shot" src="out/banner-violet.png" alt="Банер Violet: листовий напис на фіолетовому" loading="lazy"><figcaption><b>Violet</b> · запасний</figcaption></figure>
     <figure><img class="shot" src="out/banner-crimson.png" alt="Банер Crimson: листовий напис на малиновому" loading="lazy"><figcaption><b>Crimson</b> · на час кампанії</figcaption></figure>
-    <figure><img class="shot" src="out/banner-stripes.png" alt="Банер Stripes: три смуги кольорів з назвами sense, magic, mess" loading="lazy"><figcaption><b>Stripes</b> · палітра як банер</figcaption></figure>
+    <figure><img class="shot" src="out/banner-stripes.png" alt="Банер Stripes: три смуги кольорів з назвами шавлія, фіалка, малина" loading="lazy"><figcaption><b>Stripes</b> · палітра як банер</figcaption></figure>
   </div>
   <div class="grid profile">
     <div class="copy"><div class="label">біо</div><pre>cc / web3 marketer @solus_group
-smtm sense, smtm mess
 dm for collab</pre></div>
     <div class="copy"><div class="label">аватар</div><pre>Твоє фото на однотонному листовому або фіолетовому тлі (фон можна прибрати в Canva), щоб аватар і банер були однієї гами.</pre></div>
   </div>
@@ -188,9 +188,9 @@ dm for collab</pre></div>
   <div class="label">06 · рубрики</div>
   <h2>Колір = тип посту</h2>
   <div class="grid pillars">
-    <div class="pil c-leaf"><span class="label">theme=leaf</span><h3>Sense</h3><p>Тули, фреймворки, чеклісти. Пости, які зберігають.</p></div>
-    <div class="pil c-violet"><span class="label">theme=violet</span><h3>Threads &amp; collabs</h3><p>Обкладинки тредів, спейси, анонси.</p></div>
-    <div class="pil c-crimson"><span class="label">theme=crimson</span><h3>Mess</h3><p>Хот-тейки, факапи, думки о другій ночі.</p></div>
+    <div class="pil c-leaf"><span class="label">theme=leaf</span><h3>Користь</h3><p>Тули, фреймворки, чеклісти. Пости, які зберігають.</p></div>
+    <div class="pil c-violet"><span class="label">theme=violet</span><h3>Треди й колаби</h3><p>Обкладинки тредів, спейси, анонси.</p></div>
+    <div class="pil c-crimson"><span class="label">theme=crimson</span><h3>Гострі думки</h3><p>Хот-тейки, факапи, думки о другій ночі.</p></div>
   </div>
 </div></section>
 
@@ -204,7 +204,7 @@ dm for collab</pre></div>
     <figure><img class="shot" src="out/post-quote-lens.png" alt="Цитата на фіолетовому з пелюсткою" loading="lazy"><figcaption><b>quote · violet · el=lens</b> · з пелюсткою в кутку</figcaption></figure>
     <figure><img class="shot" src="out/post-quote-spot.png" alt="Цитата на малиновому з вічком" loading="lazy"><figcaption><b>quote · crimson · el=spot</b> · з вічком</figcaption></figure>
     <figure><img class="shot" src="out/post-thread.png" alt="Обкладинка треду на фіолетовому" loading="lazy"><figcaption><b>thread · el=contour</b> · перший твіт треду</figcaption></figure>
-    <figure><img class="shot" src="out/post-sense-mess.png" alt="Порівняння sense і mess" loading="lazy"><figcaption><b>sense-mess</b> · фірмовий формат з твого біо</figcaption></figure>
+    <figure><img class="shot" src="out/post-do-dont.png" alt="Порівняння так і не так" loading="lazy"><figcaption><b>do-dont</b> · «так / не так», порівняння як треба і як буває</figcaption></figure>
     <figure><img class="shot" src="out/post-list.png" alt="Список з п'яти тулів" loading="lazy"><figcaption><b>list</b> · 3–6 пунктів</figcaption></figure>
     <figure><img class="shot" src="out/post-collab.png" alt="Анонс колаборації" loading="lazy"><figcaption><b>collab · el=trail</b> · колаби, спейси, івенти</figcaption></figure>
     <figure style="max-width:420px"><img class="shot" src="out/post-stack.png" alt="Три кольорові смуги з трьома правилами" loading="lazy"><figcaption><b>stack</b> · 4:5, три смуги як у референсі, по одній думці на смугу</figcaption></figure>
@@ -213,9 +213,14 @@ dm for collab</pre></div>
 
 <section class="s-leaf"><div class="wrap">
   <div class="label">08 · відео</div>
-  <div class="grid anim" style="margin-top:16px">
-    <figure><video class="shot" src="out/intro.mp4" autoplay muted loop playsinline controls aria-label="Анімоване інтро: кольорові смуги відкривають напис MESOKLA"></video></figure>
-    <div><h2 style="font-size:clamp(36px,5vw,60px)">Інтро 4 секунди</h2><p>Фіолетова і малинова смуги заїжджають і роз'їжджаються, а під ними з'являється MESOKLA. Підходить на початок або кінець відео. Будь-який шаблон можна так само анімувати і зрендерити в MP4.</p></div>
+  <div style="margin-top:16px">
+    <div><h2 style="font-size:clamp(36px,5vw,60px)">Інтро з метеликом</h2><p>Три сценарії по 4,5 секунди, кожен на будь-якому з трьох фонів. Комбінуй їх, щоб відео щоразу починалося трохи інакше.</p></div>
+  </div>
+  <div class="grid vids">
+    <figure><video class="shot" src="out/intro-fly-crimson.mp4" autoplay muted loop playsinline controls aria-label="Інтро: метелик прилітає по пунктирному сліду на малиновому фоні"></video><figcaption><b>Політ · малина</b> · метелик прилітає по пунктирному сліду і сідає над написом</figcaption></figure>
+    <figure><video class="shot" src="out/intro-draw-leaf.mp4" autoplay muted loop playsinline controls aria-label="Інтро: метелик промальовується лінією на шавлієвому фоні"></video><figcaption><b>Промальовка · шавлія</b> · лінія малює метелика, він махає крилами і злітає до напису</figcaption></figure>
+    <figure><video class="shot" src="out/intro-zoom-violet.mp4" autoplay muted loop playsinline controls aria-label="Інтро: камера відʼїжджає від крила на фіолетовому фоні"></video><figcaption><b>Зум · фіалка</b> · старт усередині контурів крила, камера відʼїжджає і показує метелика</figcaption></figure>
+    <figure><video class="shot" src="out/intro-fly-leaf.mp4" autoplay muted loop playsinline controls aria-label="Інтро: політ на шавлієвому фоні"></video><figcaption><b>Політ · шавлія</b> · той самий сценарій в іншому кольорі</figcaption></figure>
   </div>
 </div></section>
 
@@ -224,17 +229,17 @@ dm for collab</pre></div>
   <h2>Як користуватися</h2>
   <p class="lead">Пак лежить у репозиторії як скіл mesokla-brand. Пиши Claude, що потрібно, і він збере візуал за цими правилами.</p>
   <div class="grid cmds">
-    <div class="cmd"><div class="label">хот-тейк</div><p>«Зроби візуал до твіту: community is your product»</p><code>node scripts/render.mjs quote out/x.png \
-  "text=Your community is your *product*."</code></div>
+    <div class="cmd"><div class="label">хот-тейк</div><p>«Зроби візуал до твіту про ком’юніті»</p><code>node scripts/render.mjs quote out/x.png \
+  "text=Ком’юніті — це твій *продукт*."</code></div>
     <div class="cmd"><div class="label">тред</div><p>«Обкладинка треду про KOL-кампанії, 7 твітів»</p><code>node scripts/render.mjs thread out/t.png \
-  "title=KOL campaigns *that* work" count="1 / 7" el=contour</code></div>
-    <div class="cmd"><div class="label">sense vs mess</div><p>«Зроби sense vs mess про запуски»</p><code>node scripts/render.mjs sense-mess out/sm.png \
-  "sense=Brief with KPIs|Mid-tier KOLs" "mess=Pay for a tweet|Pray"</code></div>
+  "title=KOL-кампанії, *які* працюють" count="1 / 7" el=contour</code></div>
+    <div class="cmd"><div class="label">так / не так</div><p>«Зроби так / не так про запуски»</p><code>node scripts/render.mjs do-dont out/dd.png \
+  "yes=Бриф з KPI|Мід-тір KOL" "no=Платити за твіт|Молитися"</code></div>
     <div class="cmd"><div class="label">елемент або метелик</div><p>Додай до будь-якого посту el=wing, wings, contour, lens, trail, spot, curl, dots або moth</p><code>node scripts/render.mjs quote out/q.png \
-  "text=Consistency *beats* virality." theme=violet el=lens</code></div>
-    <div class="cmd"><div class="label">банер і відео</div><p>«Онови банер під кампанію» або «Зроби інтро»</p><code>node scripts/render.mjs banner out/b.png theme=crimson
-node scripts/video.mjs templates/intro.html out/i.mp4 4</code></div>
+  "text=Регулярність *перемагає* віральність." theme=violet el=lens</code></div>
+    <div class="cmd"><div class="label">банер і відео</div><p>«Онови банер під кампанію» або «Зроби інтро: політ на малиновому»</p><code>node scripts/render.mjs banner out/b.png theme=crimson
+node scripts/video.mjs "templates/intro.html?v=fly&amp;theme=crimson" out/i.mp4 4.5</code></div>
   </div>
 </div></section>
 </main>
-<footer><div class="wrap label">mesokla · leaf #A6B8A0 · violet #8B729C · crimson #E20942</div></footer>
+<footer><div class="wrap label">mesokla · шавлія #A6B8A0 · фіалка #8B729C · малина #E20942</div></footer>
