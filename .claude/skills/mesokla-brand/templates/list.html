@@ -1,18 +1,15 @@
-<!doctype html><html><head><meta charset="utf-8"><title>List / alpha · 1600×900</title>
-<link rel="stylesheet" href="../brand.css"><link rel="stylesheet" href="post.css">
+<!doctype html><html><head><meta charset="utf-8"><title>List · 1600×900</title>
+<link rel="stylesheet" href="../brand.css">
 <style>
-.wrap{margin:auto 0;display:grid;grid-template-columns:560px 1fr;gap:80px;align-items:center}
-h1{font-family:var(--serif);font-weight:600;font-size:100px;line-height:.95;letter-spacing:-.02em}
-ol{list-style:none;counter-reset:i;display:flex;flex-direction:column;gap:22px}
-li{counter-increment:i;display:grid;grid-template-columns:76px 1fr;align-items:center;gap:22px;font-size:34px;line-height:1.25;font-weight:500;padding:20px 28px;border-radius:22px;background:color-mix(in srgb,var(--fg) 7%,transparent);border:1.5px solid color-mix(in srgb,var(--fg) 14%,transparent)}
-li::before{content:"0" counter(i);font-family:var(--mono);font-size:26px;color:var(--acc);letter-spacing:.08em}
-</style></head><body><div class="canvas grain">
-<img class="layer veins v-c" src="../assets/veins-crimson.svg" alt=""><img class="layer veins v-i" src="../assets/veins-ink.svg" alt=""><div class="layer glow-violet"></div>
-<div class="frame">
- <div class="top"><span class="kicker" data-f="kicker">grimoire ✦ tools</span><span class="chip" style="color:var(--acc)" data-f="tag">save this</span></div>
- <div class="wrap"><h1 data-f="title">5 tools in my <em>marketing</em> cauldron</h1>
- <ol id="items"></ol></div>
- <div class="bottom"><span class="sig">mesokla<span class="star4"></span></span><span class="handle" data-f="handle">@mesokla</span></div>
-</div></div>
-<script>const it=(new URLSearchParams(location.search).get('items')||'Dune — on-chain dashboards|Kaito — mindshare tracking|Typefully — threads & scheduling|Notion — content calendar|Claude — the familiar').split('|');document.getElementById('items').innerHTML=it.map(s=>'<li><span></span></li>').join('');document.querySelectorAll('#items li span').forEach((e,i)=>e.textContent=it[i])</script>
-<script src="fill.js"></script></body></html>
+.wrap{margin:auto 0;display:grid;grid-template-columns:600px 1fr;gap:88px;align-items:center}
+h1{font-size:96px}
+ol{list-style:none;counter-reset:i}
+li{counter-increment:i;display:grid;grid-template-columns:90px 1fr;align-items:baseline;font-size:34px;font-weight:700;line-height:1.25;padding:20px 0;border-top:3px solid var(--sub)}
+li:last-child{border-bottom:3px solid var(--sub)}
+li::before{content:"0" counter(i);font-family:var(--display);font-weight:900;font-size:30px;color:var(--sub)}
+</style></head><body><div class="canvas"><div class="frame">
+ <div class="top"><span class="label" data-f="kicker">tools</span><span class="pill" data-f="tag">save this</span></div>
+ <div class="wrap"><h1 class="display" data-f="title">5 tools I use <em>every</em> day</h1>
+ <ol data-list="items" data-default="Dune — on-chain dashboards|Kaito — mindshare tracking|Typefully — threads|Notion — content calendar|Claude — drafts & visuals"></ol></div>
+ <div class="bottom"><span class="sig">mesokla</span><span class="handle" data-f="handle">@mesokla</span></div>
+</div></div><script src="fill.js"></script></body></html>

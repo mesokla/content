@@ -1,35 +1,18 @@
-<!doctype html><html><head><meta charset="utf-8"><title>Mesy intro · animated · 1600×900 · 4s</title>
-<link rel="stylesheet" href="../brand.css"><link rel="stylesheet" href="post.css">
+<!doctype html><html><head><meta charset="utf-8"><title>Intro · animated · 1600×900 · 4s</title>
+<link rel="stylesheet" href="../brand.css">
 <style>
-/* All motion is CSS keyframes so scripts/video.mjs can scrub it frame-by-frame. Total 4s. */
-.veins{animation:veins 4s ease-out both}
-@keyframes veins{0%{opacity:0;transform:scale(1.08)}40%{opacity:var(--vo)}100%{opacity:var(--vo);transform:scale(1)}}
-.mesy-wrap{position:absolute;left:50%;bottom:-40px;width:520px;height:624px;margin-left:-560px;animation:rise 4s cubic-bezier(.2,.8,.2,1) both}
-.mesy-wrap img{position:absolute;inset:0;width:100%;height:100%}
-.bob{position:absolute;inset:0;animation:bob 2s ease-in-out .9s infinite}
-@keyframes rise{0%{transform:translateY(110%)}22%{transform:translateY(-4%)}30%,100%{transform:translateY(0)}}
-@keyframes bob{0%,100%{transform:translateY(0) rotate(0)}50%{transform:translateY(-12px) rotate(-1.5deg)}}
-.open{animation:blinkO 4s steps(1) both}.closed{animation:blinkC 4s steps(1) both}
-@keyframes blinkO{0%,55%{opacity:1}57%{opacity:0}61%,100%{opacity:1}}
-@keyframes blinkC{0%,55%{opacity:0}57%{opacity:1}61%,100%{opacity:0}}
-.word{position:absolute;left:820px;top:300px}
-.word .wordmark{font-size:200px;color:var(--fg)}
-.word .wordmark span{display:inline-block;animation:letter 4s cubic-bezier(.2,.8,.2,1) both}
-@keyframes letter{0%,30%{opacity:0;transform:translateY(40px)}45%,100%{opacity:1;transform:none}}
-.tag{margin-top:24px;font-family:var(--mono);font-size:26px;letter-spacing:.24em;text-transform:uppercase;color:var(--sub);animation:fade 4s both}
-@keyframes fade{0%,55%{opacity:0;letter-spacing:.6em}75%,100%{opacity:1;letter-spacing:.24em}}
-.burst{position:absolute;color:var(--crimson);animation:burst 4s both}
-@keyframes burst{0%,28%{transform:scale(0) rotate(0);opacity:0}36%{transform:scale(1.4) rotate(90deg);opacity:1}48%,100%{transform:scale(1) rotate(90deg);opacity:1}}
-.tw{position:absolute;color:var(--bone);animation:tw 1.6s ease-in-out infinite}
-@keyframes tw{0%,100%{transform:scale(.4);opacity:.3}50%{transform:scale(1);opacity:1}}
-</style></head><body><div class="canvas grain">
-<img class="layer veins v-c" src="../assets/veins-crimson.svg" alt=""><img class="layer veins v-i" src="../assets/veins-ink.svg" alt=""><div class="layer glow-violet"></div>
-<span class="tw star4" style="left:240px;top:120px;font-size:40px"></span>
-<span class="tw star4" style="left:1420px;top:160px;font-size:28px;animation-delay:.5s"></span>
-<span class="tw star4" style="left:760px;top:120px;font-size:22px;animation-delay:1s"></span>
-<span class="tw star4" style="left:1360px;top:720px;font-size:50px;animation-delay:.3s"></span>
-<div class="mesy-wrap"><div class="bob"><img class="open" src="../mascot/mesy.svg" alt=""><img class="closed" src="../mascot/mesy-content.svg" alt=""></div></div>
-<span class="burst star4" style="left:1510px;top:290px;font-size:56px"></span>
-<div class="word"><div class="wordmark"><span style="animation-delay:0s">m</span><span style="animation-delay:.05s">e</span><span style="animation-delay:.1s">s</span><span style="animation-delay:.15s">o</span><span style="animation-delay:.2s">k</span><span style="animation-delay:.25s">l</span><span style="animation-delay:.3s">a</span></div>
-<div class="tag" data-f="tag">smtm sense ✦ smtm mess</div></div>
+/* CSS keyframes only, so scripts/video.mjs can scrub frame by frame. 4s total. */
+.bar{position:absolute;left:0;right:0;height:34%;animation:4s cubic-bezier(.7,0,.2,1) both}
+.bar.v{top:0;background:var(--violet);animation-name:v}
+.bar.c{top:33%;background:var(--crimson);animation-name:c}
+@keyframes v{0%{transform:translateX(-100%)}15%,55%{transform:none}75%,100%{transform:translateY(-100%)}}
+@keyframes c{0%,8%{transform:translateX(100%)}23%,55%{transform:none}75%,100%{transform:translateX(-100%)}}
+.word{position:absolute;inset:0;display:grid;place-items:center;text-align:center}
+.word .display{font-size:230px;letter-spacing:-.025em;animation:w 4s cubic-bezier(.2,.8,.2,1) both}
+@keyframes w{0%,62%{opacity:0;transform:translateY(60px)}80%,100%{opacity:1;transform:none}}
+.tag{margin-top:28px;color:var(--sub);font-size:28px;letter-spacing:.34em;animation:t 4s both}
+@keyframes t{0%,72%{opacity:0}88%,100%{opacity:1}}
+</style></head><body><div class="canvas">
+<div class="word"><div><div class="display" data-f="name">mesokla</div><div class="tag label" data-f="tag">smtm sense / smtm mess</div></div></div>
+<div class="bar v"></div><div class="bar c"></div>
 </div><script src="fill.js"></script></body></html>

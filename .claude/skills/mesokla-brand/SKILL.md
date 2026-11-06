@@ -1,83 +1,67 @@
 ---
 name: mesokla-brand
-description: The @mesokla visual identity (X/Twitter) — palette, fonts, leaf-vein motif, Mesy the witch mascot, and render-ready templates for the profile banner, post visuals, thread covers, memes and animated intros. Use whenever the user asks for a banner, header, post visual, thread cover, meme, announcement card, avatar treatment, mascot pose, animated video/intro, or says "in my style", "brand it", "зроби візуал", "банер", "обкладинка треду", "Мессі", "відьмочка". Always apply these rules before designing anything for mesokla.
+description: The @mesokla visual identity for X/Twitter — three colours only (leaf #A6B8A0, violet #8B729C, crimson #E20942), Montserrat Black uppercase + Manrope, and render-ready templates for the profile banner, post visuals, thread covers, lists, collab announcements, 4:5 stacks and animated intros. Use whenever the user asks for a banner, header, post visual, thread cover, announcement card, carousel, avatar treatment, animated video/intro, or says "in my style", "brand it", "зроби візуал", "банер", "обкладинка треду". Always apply these rules before designing anything for mesokla.
 ---
 
 # mesokla brand
 
-Brand idea comes from the bio: **smtm sense, smtm mess**. Leaf (calm, sense) vs crimson (chaos, mess), violet = the magic between. Visual world: a night garden / grimoire on X dark mode. Owner: web3 marketer at @solus_group, Ukraine.
+Owner: @mesokla, web3 marketer at @solus_group, Ukraine. Bio line: "smtm sense, smtm mess".
+Style in one line: **flat blocks of three colours, big bold uppercase type, nothing else.**
+Visual reference: `brandbook.html`. Ready renders: `out/`.
 
-Open `brandbook.html` for the visual reference. Everything is reproducible from this folder.
+## Hard rules (the owner rejected the opposite)
 
-## 1. Tokens (source of truth: `brand.css`)
+- Only the three colours below. No white, black, grey, gradients, textures, patterns, noise, shadows, illustrations or mascots.
+- Headlines in Montserrat Black 900, UPPERCASE. No serif, no italics.
+- Simple layouts: one background colour (or 2–3 flat colour bands), text, at most one highlight block.
 
-| token | hex | role |
+## Colours (`brand.css`)
+
+| name | hex | use |
 |---|---|---|
-| Leaf Skin | `#A6B8A0` | "sense", useful content backgrounds |
-| Muted Violet | `#8B729C` | "magic", collabs/announcements, Mesy's hat |
-| Electric Crimson | `#E20942` | accent, one highlighted word, CTA, "mess" |
-| Night Ink | `#0E0B10` | base background |
-| Deep Plum | `#2B1F33` | surfaces on dark, Mesy's cloak |
-| Bone | `#F3EDE4` | text on dark |
+| Leaf Skin | `#A6B8A0` | main background, text on violet/crimson |
+| Muted Violet | `#8B729C` | threads/collabs background, highlight on leaf, secondary text on leaf |
+| Electric Crimson | `#E20942` | main text on leaf, hot-take background, highlight on violet |
 
-Proportion ≈ ink 55 / leaf 20 / violet 15 / crimson 10. Crimson is an accent, not a fill, except on `crimson` theme pieces.
-Safe pairs: bone+crimson on ink · ink+crimson on leaf · bone+ink on violet · bone+ink on crimson. Never crimson text on violet, never white text on leaf.
+Readable pairs only: crimson on leaf, violet on leaf, leaf on violet, leaf on crimson. **Never** crimson text on violet or violet text on crimson.
 
-Type: **Cormorant Garamond** 600/italic (display, wordmark, quotes) · **Inter** 400–600 (body, min 32px on 1600×900) · **JetBrains Mono** uppercase, tracked .18em (kickers, handle, numbers, dates). Fonts are bundled in `fonts/` (OFL).
+Themes (`theme=`): `leaf` (default: bg leaf, text crimson, secondary violet, highlight violet) · `violet` (bg violet, text leaf, highlight crimson) · `crimson` (bg crimson, text leaf, highlight violet). Banner also has `stripes`.
 
-Wordmark: `mesokla` in Cormorant italic 600, lowercase, followed by a crimson four-point star ✦ top-right.
+## Type
 
-Motifs: crimson leaf veins (`assets/veins-*.svg`, opacity 20–40%, never under text strokes) · four-point star ✦ (max 4 per visual) · subtle film grain.
+- **Display:** Montserrat 900, uppercase, line-height 0.92–1, tracking -0.01em. Headline ≤ 10 words.
+- **Small text:** Manrope 600–800. Lists ≥ 32px on 1600×900. Kickers/labels uppercase, tracked .16em.
+- Highlight: wrap one word in `*stars*` → it gets a flat block in the highlight colour. Max one per visual.
+- Fonts bundled in `fonts/` (OFL, Latin + Cyrillic, so Ukrainian works).
 
-## 2. Content pillars → theme
+## Templates (`templates/*.html`)
 
-| pillar | theme | for |
-|---|---|---|
-| Sense | `leaf` | frameworks, tools, checklists (saves) |
-| Mess | `crimson` | fails, POV memes, behind the scenes (shares) |
-| Magic | `violet` | collabs, spaces, launches (status) |
-| Night notes | `night` (default) | hot takes, quotes (replies) |
-
-Pick the theme from the pillar. If unclear, ask once or default to `night`.
-
-## 3. Templates (`templates/*.html`)
-
-Render: `NODE_PATH=$(npm root -g) node scripts/render.mjs <template> <out.png> key=value ...`
-Value syntax: `|` = new line / new list item, `*word*` = crimson italic emphasis. Common keys: `theme`, `handle`, `kicker`, `tag`, `mascot=../mascot/mesy-<pose>.svg`.
+Render: `node scripts/render.mjs <template> <out.png> key=value ...` (needs Playwright). `|` = new line / new list item.
+Common keys: `theme`, `kicker` (top-left label), `tag` (top-right pill), `handle`.
 
 | template | size | keys |
 |---|---|---|
-| `banner` | 1500×500 X header | `theme` night/leaf/crimson, `mascot`, `l`, `r` (tagline halves). Avatar covers bottom-left ~330×170px — keep empty |
-| `quote` | 1600×900 | `text`, `kicker`, `tag`, optional `mascot` |
-| `thread` | 1600×900 | `title`, `eyebrow`, `sub`, `count` ("1 / 9"), `mascot` |
-| `sense-mess` | 1600×900 | `sense`, `mess` (items with `|`, 2–4 each, ≤6 words) — signature format |
-| `list` | 1600×900 | `title`, `items` (3–6, `|`-separated), `tag` |
-| `collab` | 1600×900 (violet default) | `partner`, `what`, `date`, `tag` |
-| `meme` | 1080×1350 (leaf default) | `text`, `bubble`, `mascot`, `kicker` |
-| `intro` | 1600×900 animated, 4s | `tag`. Render with `scripts/video.mjs` |
+| `banner` | 1500×500 | `theme` leaf/violet/crimson/stripes, `name`, `tag`, `corner`. Avatar covers bottom-left ~330×170 — keep empty |
+| `quote` | 1600×900 | `text` |
+| `thread` | 1600×900, violet | `title`, `sub`, `count` ("1 / 9") |
+| `sense-mess` | 1600×900 | `sense`, `mess` (2–4 items each, `|`-separated, ≤6 words) |
+| `list` | 1600×900 | `title`, `items` (3–6, `|`-separated) |
+| `collab` | 1600×900 | `partner`, `what`, `date` |
+| `stack` | 1080×1350 | `t1`, `t2`, `t3` (one idea per colour band), `kicker` |
+| `intro` | 1600×900, animated 4s | `name`, `tag` — render with `scripts/video.mjs` |
 
-Video: `node scripts/video.mjs templates/intro.html out/intro.mp4 4 1600 900 30` — scrubs CSS keyframes frame by frame into H.264 MP4. New animated templates must use only CSS animations (no JS timers) so they scrub.
+Other sizes: `size=WxH` (e.g. article cover `size=1500x600`).
+Video: `node scripts/video.mjs templates/intro.html out/intro.mp4 4 1600 900 30`. Animated templates must use CSS keyframes only so they can be scrubbed frame by frame.
 
-Ready renders of every template live in `out/`.
+New template: an HTML file in `templates/` linking `../brand.css`, using `.canvas`, `.frame/.top/.bottom`, `.display`, `.label`, `.pill`, `.sig`, plus `<script src="fill.js">`.
 
-## 4. Mesy (the mascot)
+## Pillars → theme
 
-Name = mesokla + mess. Tiny witch-marketer: violet hat with crimson band, star and a leaf-vein leaf on the tip; wheat hair `#E9D6B0` (only off-palette colour, Mesy only); plum cloak with crimson lining; crimson star wand with glow. Flat vector sticker, 4px ink outline, no shadows/3D.
+Sense (tools, frameworks) → `leaf` · Threads & collabs → `violet` · Mess (hot takes, fails) → `crimson`.
 
-Poses in `mascot/`: `mesy.svg` (default, confident) · `mesy-happy.svg` (it worked!) · `mesy-wow.svg` (shocked) · `mesy-content.svg` (pleased). New poses: copy `mesy.svg` and toggle/edit layers by id: `m-body, m-hair-back, m-head, m-face, m-blush, m-eyes-open, m-eyes-closed, m-lashes, m-mouth-smile, m-mouth-open, m-bangs, m-hat, m-leaf, m-arm, m-wand, m-sparkles`. Keep the 400×480 viewBox.
+## Workflow
 
-Rules: Mesy in ~1 of every 3–4 visuals; may be cropped at the waist / peek from an edge; never recoloured, stretched, placed over text, or on crimson without her outline. Animation basics: 2s bob, blink every 3–4s, wand-star flash before text appears, twinkling stars.
-
-## 5. Voice on visuals
-
-Lowercase, English, short. Witchy vocabulary used lightly: spells, grimoire, cauldron, familiar, casting. Headline ≤ 8 words, one crimson-italic word max. Ukrainian copy works too (fonts include Cyrillic).
-
-## 6. Workflow
-
-1. Identify the pillar → theme, and the template (or build a new HTML in `templates/` that links `../brand.css` and `post.css` and reuses `.frame/.top/.bottom/.sig`).
-2. Write the copy in the brand voice; confirm text with the user if it is a claim about a partner or numbers.
-3. Render to `out/` (or the user's chosen folder), then look at the PNG before handing it over.
-4. QA: text not on thick veins, nothing in the banner avatar zone, ≤1 crimson word, ≤4 stars, handle bottom-right, signature bottom-left.
-5. Deliver PNG/MP4 and the exact command used so the user can re-render.
-
-X sizes: header 1500×500 · in-feed image 1600×900 (16:9) or 1080×1350 (4:5) · avatar 400×400 · article cover 1500×600 (use `size=1500x600` with any template).
+1. Pick the pillar → theme and the template.
+2. Write short lowercase-agnostic copy (it renders uppercase); confirm partner names, dates and numbers with the user.
+3. Render, look at the PNG, check: only three colours, no forbidden pair, text not clipped, avatar zone empty on banners, ≤1 highlight.
+4. Deliver the file plus the exact command used.
