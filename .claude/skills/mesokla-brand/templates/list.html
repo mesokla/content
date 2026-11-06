@@ -1,0 +1,18 @@
+<!doctype html><html><head><meta charset="utf-8"><title>List / alpha · 1600×900</title>
+<link rel="stylesheet" href="../brand.css"><link rel="stylesheet" href="post.css">
+<style>
+.wrap{margin:auto 0;display:grid;grid-template-columns:560px 1fr;gap:80px;align-items:center}
+h1{font-family:var(--serif);font-weight:600;font-size:100px;line-height:.95;letter-spacing:-.02em}
+ol{list-style:none;counter-reset:i;display:flex;flex-direction:column;gap:22px}
+li{counter-increment:i;display:grid;grid-template-columns:76px 1fr;align-items:center;gap:22px;font-size:34px;line-height:1.25;font-weight:500;padding:20px 28px;border-radius:22px;background:color-mix(in srgb,var(--fg) 7%,transparent);border:1.5px solid color-mix(in srgb,var(--fg) 14%,transparent)}
+li::before{content:"0" counter(i);font-family:var(--mono);font-size:26px;color:var(--acc);letter-spacing:.08em}
+</style></head><body><div class="canvas grain">
+<img class="layer veins v-c" src="../assets/veins-crimson.svg" alt=""><img class="layer veins v-i" src="../assets/veins-ink.svg" alt=""><div class="layer glow-violet"></div>
+<div class="frame">
+ <div class="top"><span class="kicker" data-f="kicker">grimoire ✦ tools</span><span class="chip" style="color:var(--acc)" data-f="tag">save this</span></div>
+ <div class="wrap"><h1 data-f="title">5 tools in my <em>marketing</em> cauldron</h1>
+ <ol id="items"></ol></div>
+ <div class="bottom"><span class="sig">mesokla<span class="star4"></span></span><span class="handle" data-f="handle">@mesokla</span></div>
+</div></div>
+<script>const it=(new URLSearchParams(location.search).get('items')||'Dune — on-chain dashboards|Kaito — mindshare tracking|Typefully — threads & scheduling|Notion — content calendar|Claude — the familiar').split('|');document.getElementById('items').innerHTML=it.map(s=>'<li><span></span></li>').join('');document.querySelectorAll('#items li span').forEach((e,i)=>e.textContent=it[i])</script>
+<script src="fill.js"></script></body></html>

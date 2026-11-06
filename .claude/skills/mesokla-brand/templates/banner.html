@@ -1,0 +1,33 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><title>X header · 1500×500</title>
+<link rel="stylesheet" href="../brand.css">
+<style>
+/* Render at 1500×500. Avatar covers bottom-left (~0–330px × 330–500px): keep it empty. */
+body{--bg:var(--ink);--fg:var(--bone);--sub:var(--leaf);--vo:.55;--sparkle:var(--bone)}
+body[data-theme=leaf]{--bg:var(--leaf);--fg:var(--ink);--sub:var(--plum);--vo:.6;--sparkle:var(--bone)}
+body[data-theme=crimson]{--bg:var(--crimson);--fg:var(--bone);--sub:var(--ink);--vo:.22;--sparkle:var(--ink)}
+.canvas{background:var(--bg)}
+.veins{opacity:var(--vo)}
+body:not([data-theme]) .v-c, body[data-theme=leaf] .v-c{display:block} .v-i{display:none}
+body[data-theme=crimson] .v-c{display:none} body[data-theme=crimson] .v-i{display:block}
+body[data-theme] .glow-violet{display:none}
+.mark{position:absolute;left:400px;top:92px;color:var(--fg)}
+.mark .wordmark{font-size:210px}
+.tag{margin-top:26px;display:flex;gap:22px;align-items:center;font-family:var(--mono);font-size:24px;letter-spacing:.2em;text-transform:uppercase;color:var(--sub)}
+.tag i{width:9px;height:9px;border-radius:50%;background:var(--crimson)}
+body[data-theme=crimson] .tag i,body[data-theme=crimson] .wordmark .star{background:var(--bone)}
+.mesy{position:absolute;right:70px;bottom:-34px;height:470px}
+.sp{position:absolute;color:var(--sparkle)}
+.swatch{position:absolute;right:28px;top:28px;display:flex;gap:8px}
+.swatch b{width:14px;height:14px;border-radius:50%;border:1.5px solid var(--fg)}
+</style></head><body><div class="canvas grain">
+<img class="layer veins v-c" src="../assets/veins-crimson.svg" alt=""><img class="layer veins v-i" src="../assets/veins-ink.svg" alt="">
+<div class="layer glow-violet"></div>
+<span class="sp star4" style="left:330px;top:70px;font-size:46px"></span>
+<span class="sp star4" style="left:1080px;top:60px;font-size:26px;opacity:.8"></span>
+<span class="sp star4" style="left:1010px;top:380px;font-size:60px"></span>
+<span class="sp star4" style="left:120px;top:150px;font-size:18px;opacity:.6"></span>
+<div class="mark"><div class="wordmark"><span data-f="name">mesokla</span><span class="star star4"></span></div>
+<div class="tag"><span data-f="l">smtm sense</span><i></i><span data-f="r">smtm mess</span></div></div>
+<img class="mesy" data-f="mascot" src="../mascot/mesy.svg" alt="">
+<div class="swatch"><b style="background:#A6B8A0"></b><b style="background:#8B729C"></b><b style="background:#E20942"></b></div>
+</div><script src="fill.js"></script></body></html>

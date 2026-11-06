@@ -1,0 +1,35 @@
+/* mesokla brand tokens — single source of truth. */
+@import url("fonts/fonts.css");
+:root{
+  --leaf:#A6B8A0;      /* Leaf Skin — calm, "sense" */
+  --violet:#8B729C;    /* Muted Violet — magic, the witch */
+  --crimson:#E20942;   /* Electric Crimson — accent, "mess", CTA */
+  --ink:#0E0B10;       /* Night Ink — base background */
+  --plum:#2B1F33;      /* Deep Plum — surfaces on dark */
+  --bone:#F3EDE4;      /* Bone — text on dark, light bg */
+  --leaf-deep:#5E7058; /* text on leaf */
+  --violet-soft:#C9BBD3;
+  --serif:"Cormorant Garamond",Georgia,serif;
+  --sans:"Inter",system-ui,sans-serif;
+  --mono:"JetBrains Mono",ui-monospace,monospace;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{width:100%;height:100%}
+body{font-family:var(--sans);background:var(--ink);color:var(--bone);-webkit-font-smoothing:antialiased;overflow:hidden}
+.canvas{position:relative;width:100vw;height:100vh;overflow:hidden;isolation:isolate}
+.layer{position:absolute;inset:0;width:100%;height:100%;pointer-events:none}
+.veins{object-fit:cover}
+.grain::after{content:"";position:absolute;inset:0;pointer-events:none;opacity:.16;mix-blend-mode:overlay;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='240' height='240'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")}
+.glow-violet{background:radial-gradient(60% 80% at 75% 40%,rgba(139,114,156,.45),transparent 70%)}
+.glow-crimson{background:radial-gradient(40% 60% at 20% 90%,rgba(226,9,66,.28),transparent 70%)}
+.wordmark{font-family:var(--serif);font-style:italic;font-weight:600;letter-spacing:-.02em;line-height:.9}
+.wordmark .star{color:var(--crimson);font-style:normal;display:inline-block;width:.32em;height:.32em;vertical-align:top;margin:.08em 0 0 .05em}
+.kicker{font-family:var(--mono);font-size:22px;letter-spacing:.18em;text-transform:uppercase}
+.serif{font-family:var(--serif)}
+.mono{font-family:var(--mono)}
+.chip{display:inline-flex;align-items:center;gap:10px;padding:8px 18px;border-radius:999px;border:1.5px solid currentColor;font-family:var(--mono);font-size:20px;letter-spacing:.12em;text-transform:uppercase}
+.star4{display:inline-block;width:1em;height:1em;background:currentColor;
+  -webkit-mask:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='-1 -1 2 2'%3E%3Cpath d='M0-1Q0 0 1 0Q0 0 0 1Q0 0-1 0Q0 0 0-1Z'/%3E%3C/svg%3E") center/contain no-repeat;
+          mask:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='-1 -1 2 2'%3E%3Cpath d='M0-1Q0 0 1 0Q0 0 0 1Q0 0-1 0Q0 0 0-1Z'/%3E%3C/svg%3E") center/contain no-repeat}
+.handle{font-family:var(--mono);font-size:22px;letter-spacing:.06em}

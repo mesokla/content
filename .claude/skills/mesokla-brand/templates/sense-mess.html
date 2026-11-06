@@ -1,0 +1,26 @@
+<!doctype html><html><head><meta charset="utf-8"><title>Sense vs Mess · 1600×900</title>
+<link rel="stylesheet" href="../brand.css">
+<style>
+/* Signature format: left = sense (leaf), right = mess (crimson). Items separated by "|". */
+.canvas{display:grid;grid-template-columns:1fr 1fr}
+.side{position:relative;padding:80px 84px;display:flex;flex-direction:column;overflow:hidden}
+.sense{background:var(--leaf);color:var(--ink)} .mess{background:var(--crimson);color:var(--bone)}
+.side img.layer{opacity:.35}
+.lab{font-family:var(--mono);font-size:24px;letter-spacing:.2em;text-transform:uppercase;display:flex;gap:12px;align-items:center}
+h2{font-family:var(--serif);font-style:italic;font-weight:600;font-size:150px;line-height:.9;margin:18px 0 40px;letter-spacing:-.02em}
+.items{font-size:36px;line-height:1.35;font-weight:500;position:relative}
+.items{list-style:none;display:flex;flex-direction:column;gap:22px}.items li{display:grid;grid-template-columns:28px 1fr;gap:16px;align-items:baseline}.items li::before{content:"✦";font-size:24px}.sense li::before{color:var(--crimson)}.mess li::before{color:var(--ink)}
+.vs{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);width:150px;height:150px;border-radius:50%;background:var(--ink);color:var(--bone);display:grid;place-items:center;font-family:var(--serif);font-style:italic;font-size:62px;z-index:2;border:5px solid var(--bone)}
+.foot{margin-top:auto;font-family:var(--mono);font-size:22px;letter-spacing:.06em;opacity:.8}
+.topic{position:absolute;left:0;right:0;top:34px;text-align:center;font-family:var(--mono);font-size:22px;letter-spacing:.2em;text-transform:uppercase;z-index:3;color:var(--ink)}
+</style></head><body><div class="canvas grain">
+<div class="side sense"><img class="layer veins" src="../assets/veins-crimson.svg" alt="">
+ <div class="lab"><span class="star4" style="color:var(--crimson)"></span>smtm</div><h2>sense</h2>
+ <ul class="items" data-l="sense">Post when your audience is awake|One CTA per post|Reply to the first 20 comments</ul>
+ <div class="foot">mesokla ✦</div></div>
+<div class="side mess"><img class="layer veins" src="../assets/veins-ink.svg" alt="">
+ <div class="lab"><span class="star4" style="color:var(--ink)"></span>smtm</div><h2>mess</h2>
+ <ul class="items" data-l="mess">Post at 3am because vibes|“GM” ×40, no context|Ghost your own replies</ul>
+ <div class="foot" style="text-align:right" data-f="handle">@mesokla</div></div>
+<div class="vs">vs</div>
+</div><script>const Q=new URLSearchParams(location.search);document.querySelectorAll('[data-l]').forEach(u=>{const v=(Q.get(u.dataset.l)||u.textContent).split('|');u.innerHTML=v.map(()=>'<li><span></span></li>').join('');u.querySelectorAll('span').forEach((e,i)=>e.textContent=v[i].trim())})</script><script src="fill.js"></script></body></html>
