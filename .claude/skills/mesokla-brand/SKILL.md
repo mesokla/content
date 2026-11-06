@@ -6,7 +6,7 @@ description: The @mesokla visual identity for X/Twitter — three colours only (
 # mesokla brand
 
 Owner: @mesokla, web3 marketer at @solus_group, Ukraine.
-**Language:** visuals and examples are in Ukrainian by default (template defaults are Ukrainian); use English only if the user asks.
+**Language:** the brand book, visuals and examples are in English (template defaults are English). Ukrainian copy also renders fine (fonts include Cyrillic) when the user asks for it.
 **No tagline:** never put "smtm sense / smtm mess" (or any slogan) under the wordmark — the owner removed it. A new tagline may come later; leave the slot empty until then.
 Style in one line: **flat blocks of three colours, big bold uppercase type, nothing else.**
 Visual reference: `brandbook.html`. Ready renders: `out/`.
@@ -61,7 +61,7 @@ Common keys: `theme`, `kicker` (top-left label), `tag` (top-right pill), `handle
 | `banner` | 1500×500 | `theme` leaf/violet/crimson/stripes, `moth` trail/flight/front/none (default trail), `name`, `tag`. Avatar covers bottom-left ~330×170 — keep empty |
 | `quote` | 1600×900 | `text` |
 | `thread` | 1600×900, violet | `title`, `sub`, `count` ("1 / 9") |
-| `do-dont` | 1600×900 | `yes`, `no` (2–4 items each, `|`-separated, ≤6 words); headings `a`/`b` (default «так» / «не так»), labels `la`/`lb` |
+| `do-dont` | 1600×900 | `yes`, `no` (2–4 items each, `|`-separated, ≤6 words); headings `a`/`b` (default "do" / "don’t"), labels `la`/`lb` |
 | `list` | 1600×900 | `title`, `items` (3–6, `|`-separated) |
 | `collab` | 1600×900 | `partner`, `what`, `date` |
 | `stack` | 1080×1350 | `t1`, `t2`, `t3` (one idea per colour band), `kicker` |
@@ -75,7 +75,7 @@ New template: an HTML file in `templates/` linking `../brand.css`, using `.canva
 
 ## Pillars → theme
 
-Користь (tools, frameworks) → `leaf` · Треди й колаби → `violet` · Гострі думки (hot takes, fails) → `crimson`.
+Value (tools, frameworks) → `leaf` · Threads & collabs → `violet` · Hot takes (opinions, fails) → `crimson`.
 
 ## Workflow
 
