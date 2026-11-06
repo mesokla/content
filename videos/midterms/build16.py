@@ -3,7 +3,7 @@ import re
 B='/home/user/content/.claude/skills/mesokla-brand'
 A='/home/user/content/videos/midterms/assets/'
 O=3.0                      # voice starts after the slow moth intro
-VO_END=74.21
+VO_END=74.21+1.1*8
 T=O+VO_END+3.4
 L,V,C='#A6B8A0','#8B729C','#E20942'
 EASE='cubic-bezier(.2,.8,.2,1)'
@@ -19,6 +19,12 @@ for txt in TXT:
     toks=_norm(txt); seg=AL[k:k+len(toks)]; k+=len(toks)
     WT.append([(w,O+st_) for (w,st_,en_) in seg]); S.append((txt,seg[0][1],seg[-1][2]))
 assert k==len(AL),(k,len(AL))
+BOUND=[2,3,5,9,12,13,16,19]      # first sentence of each new scene
+GAP=1.1
+def shift(i): return GAP*sum(1 for b in BOUND if b<=i)
+WT=[[(w,t+shift(i)) for w,t in row] for i,row in enumerate(WT)]
+S=[(txt,a+shift(i),b+shift(i)) for i,(txt,a,b) in enumerate(S)]
+CUTS=[ (S[b-1][2]-shift(b-1)+S[b][1]-shift(b))/2 for b in BOUND ]   # cut points in the original audio
 def at(i,word,nth=1):
     k=0
     word=word.lower()
@@ -104,7 +110,7 @@ scene(tC,V,f"""<div class="fr">{K('the bet',tC+.4)}
 <div class="two" style="grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr)"><div>
 <div class="h" style="font-size:168px;line-height:.9;white-space:nowrap;{appear(a0-.2,.4)}">≈$<span class="odo"><span class="strip" style="animation:odo {T}s linear both">{nums}</span></span>M</div>
 <div class="h" style="font-size:54px;margin-top:20px;{fade(a1-.3)}">through {hl('fairshake',a1,C,L,L)} + super pacs</div>
-<div class="stamp" style="{pop(at(4,'other'))}">key races went the other way</div></div>
+<div class="stamp" style="{pop(at(4,'races'))}">key races went the other way</div></div>
 {card(A+'ct-headline.png','source: Cointelegraph · Nov 4',at(3,'industry'),C,840,-2)}</div></div>""",L,'leaf','r')
 # ---- D · Ohio (crimson) + Brown photo ----
 tD=st(5)-.3
@@ -223,5 +229,5 @@ html,body{{width:1920px;height:1080px;overflow:hidden;background:{C}}}
 {''.join(css)}
 </style></head><body>{''.join(scenes)}</body></html>'''
 open('midterms16.html','w').write(html)
-import json; EV.update({'T':T,'O':O,'intro_fly':[0,3.4],'outro_fly':[tJ+.2,tJ+2.2],'outro_word':tJ+1.7,'stall':s1,'draw':[c0,c1]}); json.dump(EV,open('events.json','w'),indent=1)
+import json; EV.update({'cuts':CUTS,'gap':GAP,'T':T,'O':O,'intro_fly':[0,3.4],'outro_fly':[tJ+.2,tJ+2.2],'outro_word':tJ+1.7,'stall':s1,'draw':[c0,c1]}); json.dump(EV,open('events.json','w'),indent=1)
 print('T=',T)
