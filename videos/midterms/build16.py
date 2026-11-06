@@ -2,32 +2,20 @@
 import re
 B='/home/user/content/.claude/skills/mesokla-brand'
 O=3.0                      # voice starts after the slow moth intro
-VO_END=77.35
+VO_END=74.21
 T=O+VO_END+3.4
 L,V,C='#A6B8A0','#8B729C','#E20942'
 EASE='cubic-bezier(.2,.8,.2,1)'
 # sentences with start/end in the audio (from pause detection, mapped to punctuation)
-S=[("Crypto spent around two hundred million dollars on the US midterms this week,",0.17,4.38),
-("and it didn't get what it paid for.",4.73,6.25),
-("Democrats won both the House and the Senate.",6.79,9.02),
-("Most of the industry's money went through Fairshake and a few other super PACs,",9.44,13.36),
-("and the races they cared about most went the other way.",13.72,16.16),
-("Ohio hurt the most.",16.59,17.94),
-("Sherrod Brown has been sceptical of crypto for years,",18.29,20.97),
-("and tens of millions were spent to keep him out.",21.30,23.73),
-("He's back in the Senate anyway.",24.15,25.57),
-("The bigger change is Elizabeth Warren.",26.06,27.83),
-("She's expected to chair the Senate Banking Committee,",28.15,30.46),
-("which means closer attention to exchanges, stablecoins, A-M-L and K-Y-C rules, and the crypto deals of public officials.",30.78,38.39),
-("Bills like the CLARITY Act will probably stall, or come back looking very different.",38.72,42.59),
-("The market didn't know what to do with it.",43.10,44.78),
-("Bitcoin dipped during the count, climbed back above seventy-eight thousand on Wednesday, and then sold off harder.",45.18,50.83),
-("Trump-linked tokens took the worst of it.",51.23,53.08),
-("On X, people are split.",53.48,54.69),
-("A lot of them call it a reset.",54.94,56.33),
-("Some think a divided government at least keeps things from swinging too far, and others expect Warren to come after the industry hard.",56.72,63.46),
-("The general read across the industry is that regulation isn't going away.",63.96,67.57),
-("It's just going to take longer and come with stricter rules, so projects will have to treat compliance as part of the pitch, and tokens tied to politicians now carry political risk.",67.91,77.11)]
+TXT=['Crypto spent around two hundred million dollars on the US midterms this week,', "and it didn't get what it paid for.", 'Democrats won both the House and the Senate.', "Most of the industry's money went through Fairshake and a few other super PACs,", 'and the races they cared about most went the other way.', 'Ohio hurt the most.', 'Sherrod Brown has been sceptical of crypto for years,', 'and tens of millions were spent to keep him out.', "He's back in the Senate anyway.", 'The bigger change is Elizabeth Warren.', "She's expected to chair the Senate Banking Committee,", 'which means closer attention to exchanges, stablecoins, A-M-L and K-Y-C rules, and the crypto deals of public officials.', 'Bills like the CLARITY Act will probably stall, or come back looking very different.', "The market didn't know what to do with it.", 'Bitcoin dipped during the count, climbed back above seventy-eight thousand on Wednesday, and then sold off harder.', 'Trump-linked tokens took the worst of it.', 'On X, people are split.', 'A lot of them call it a reset.', 'Some think a divided government at least keeps things from swinging too far, and others expect Warren to come after the industry hard.', "The general read across the industry is that regulation isn't going away.", "It's just going to take longer and come with stricter rules, so projects will have to treat compliance as part of the pitch, and tokens tied to politicians now carry political risk."]
+GROUPS=[([0],0.16,4.23),([1],4.55,6.09),([2],6.48,8.87),([3],9.29,13.07),([4],13.44,16.95),([5,6],17.34,22.08),([7],22.28,25.68),
+([8,9,10],26.04,32.68),([11],33.03,39.07),([12],39.41,42.76),([13],43.04,45.56),([14],45.83,50.84),([15],51.21,52.62),([16,17],53.01,56.65),
+([18],57.08,64.25),([19],64.63,67.26),([20],67.58,73.85)]
+S=[None]*len(TXT)
+for idx,a,b in GROUPS:
+    tot=sum(len(TXT[i]) for i in idx); acc=a
+    for i in idx:
+        d=(b-a)*len(TXT[i])/tot; S[i]=(TXT[i],acc,acc+d-0.08); acc+=d
 WT=[]   # per sentence: list of (token, start)
 for txt,a,b in S:
     toks=txt.split(); w=[len(t)+2 for t in toks]; tot=sum(w); acc=0; row=[]
@@ -43,6 +31,7 @@ def at(i,word,nth=1):
     raise KeyError((i,word))
 def st(i): return O+S[i][1]
 css=[];n=[0]
+EV={'wipe':[],'hl':[],'pop':[],'tick':[],'reveal':[]}
 def kf(frames):
     if frames[-1][0]<T: frames=list(frames)+[(T,frames[-1][1])]
     n[0]+=1; name=f'a{n[0]}'
@@ -52,9 +41,11 @@ def appear(t,d=.5,fr='opacity:0;transform:translateY(40px)',to='opacity:1;transf
     return kf([(0,fr),(t,fr),(t+d,to)])
 fade=lambda t,d=.4: appear(t,d,'opacity:0','opacity:1')
 def pop(t,d=.45,r=-3):
+    EV['pop'].append(round(t,3))
     a=f'opacity:0;transform:scale(.6) rotate({r*2}deg)'; return kf([(0,a),(t,a),(t+d*.6,f'opacity:1;transform:scale(1.08) rotate({r}deg)'),(t+d,f'opacity:1;transform:scale(1) rotate({r}deg)')])
 def hl(txt,t,bg,fg,base):
     """word that gets a marker swept under it when it is spoken"""
+    EV['hl'].append(round(t,3))
     return f'<span class="hl" style="--b:{bg};color:{base};{kf([(0,"background-size:0% 100%;color:"+base),(t,"background-size:0% 100%;color:"+base),(t+.35,"background-size:100% 100%;color:"+fg)])}">{txt}</span>'
 def words(text,t0,t1,extra=''):
     """reveal words of a headline one by one between t0 and t1"""
@@ -73,6 +64,7 @@ def moth(ln,ln2,o2=1,w=6,cls='flap'):
             f'<g class="wl">{wing}</g><g class="wr"><g {MIR}>{wing}</g></g>{ant}<g {MIR}>{ant}</g><ellipse cx="200" cy="222" rx="9" ry="56"/></svg>')
 scenes=[]
 def scene(t0,bg,inner,fg,sigcol,d='l'):
+    if t0>0: EV['wipe'].append(round(t0,3))
     fr={'l':'inset(0 100% 0 0)','r':'inset(0 0 0 100%)','t':'inset(0 0 100% 0)','b':'inset(100% 0 0 0)'}[d]
     stl=kf([(0,f'clip-path:{fr};visibility:hidden'),(t0-.02,f'clip-path:{fr};visibility:hidden'),(t0,f'clip-path:{fr};visibility:visible'),(t0+.6,'clip-path:inset(0 0 0 0);visibility:visible')]) if t0>0 else ''
     scenes.append(f'<section class="sc" style="background:{bg};color:{fg};{stl}">{inner}<div class="sig" style="color:{fg}"><img class="sm" src="{B}/moth/moth-front-{sigcol}.svg" alt="">MESOKLA</div><div class="hd" style="color:{fg}">@mesokla</div></section>')
@@ -103,6 +95,7 @@ scene(tB,L,f'''<div class="fr">{K('this week · us midterms',tB+.4,V)}
 tC=st(3)-.3
 nums=''.join(f'<span>{v}</span>' for v in range(0,201,10))
 a0,a1=at(3,'most'),at(3,'fairshake')
+EV['tick']=[round(a0+(a1-a0)*k/20,3) for k in range(1,21)]
 css.append('@keyframes odo{0%{transform:translateY(0)}'+f'{a0/T*100:.4f}%{{transform:translateY(0);animation-timing-function:steps(20,end)}}{a1/T*100:.4f}%{{transform:translateY(-20em)}}100%{{transform:translateY(-20em)}}'+'}')
 spin=kf([(0,'transform:rotate(0)'),(T,'transform:rotate(300deg)')])
 scene(tC,V,f'''<img class="deco" src="{B}/elements/spot-crimson.svg" style="right:-200px;top:180px;width:760px;{spin}">
@@ -220,4 +213,5 @@ html,body{{width:1920px;height:1080px;overflow:hidden;background:{C}}}
 {''.join(css)}
 </style></head><body>{''.join(scenes)}</body></html>'''
 open('midterms16.html','w').write(html)
+import json; EV.update({'T':T,'O':O,'intro_fly':[0,3.4],'outro_fly':[tJ+.2,tJ+2.2],'outro_word':tJ+1.7,'stall':s1,'draw':[c0,c1]}); json.dump(EV,open('events.json','w'),indent=1)
 print('T=',T)
