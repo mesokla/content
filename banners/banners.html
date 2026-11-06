@@ -1,0 +1,33 @@
+<title>mesokla X Banners</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@800;900&family=Manrope:wght@500;600;700;800&display=swap">
+<style>
+/* Layout: one banner per row inside an X-profile mock (banner + avatar circle), notes beside. */
+:root{--leaf:#A6B8A0;--violet:#8B729C;--crimson:#E20942;--display:"Montserrat",system-ui,sans-serif;--text:"Manrope",system-ui,sans-serif;color-scheme:dark}
+*{box-sizing:border-box}
+body{margin:0;background:#000;color:#E7E9EA;font-family:var(--text);font-weight:600;line-height:1.5}
+.wrap{max-width:1100px;margin:0 auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));padding-block:56px 80px}
+.label{font-weight:800;font-size:13px;letter-spacing:.18em;text-transform:uppercase;color:var(--leaf)}
+h1{font-family:var(--display);font-weight:900;text-transform:uppercase;font-size:clamp(40px,7vw,84px);line-height:.92;margin:12px 0 16px;color:var(--crimson)}
+.lead{max-width:62ch;margin:0 0 40px;color:#B9BEC2}
+.card{display:grid;grid-template-columns:minmax(0,1fr) 280px;gap:28px;align-items:start;margin-bottom:56px}
+.mock{position:relative;padding-bottom:12%}
+.mock img{width:100%;display:block;border-radius:4px}
+.av{position:absolute;left:3%;bottom:0;width:22%;aspect-ratio:1;border-radius:50%;background:#2a2a2a;border:4px solid #000;display:grid;place-items:center;font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:#71767B}
+.num{font-family:var(--display);font-weight:900;color:var(--crimson);font-size:18px}
+h2{font-family:var(--display);font-weight:900;text-transform:uppercase;font-size:34px;line-height:1;margin:6px 0 10px;color:var(--leaf)}
+.info p{margin:0;font-size:15px;color:#B9BEC2}
+@media (max-width:800px){.card{grid-template-columns:1fr;gap:14px}}
+</style>
+<div class="wrap">
+  <div class="label">mesokla · x header · 1500×500</div>
+  <h1>Banner options</h1>
+  <p class="lead">Six richer versions: a smaller wordmark, moths on both sides and identity elements spread across the frame. Each is shown on a black X profile with the avatar circle, so you can see what stays visible. The bottom-left corner under the avatar is kept free of anything important.</p>
+  <article class="card"><div class="mock"><img src="png/banner-mirror.png" alt="Mirror banner"><div class="av" aria-hidden="true">avatar</div></div>
+<div class="info"><span class="num">01</span><h2>Mirror</h2><p>Two moths flank a smaller wordmark, dotted trails leave from opposite corners, a petal and an eyespot balance the frame.</p></div></article><article class="card"><div class="mock"><img src="png/banner-garden.png" alt="Garden banner"><div class="av" aria-hidden="true">avatar</div></div>
+<div class="info"><span class="num">02</span><h2>Garden</h2><p>Crimson ground, two large violet wings cropped at the corners, one moth arriving on a trail and one resting.</p></div></article><article class="card"><div class="mock"><img src="png/banner-orbit.png" alt="Orbit banner"><div class="av" aria-hidden="true">avatar</div></div>
+<div class="info"><span class="num">03</span><h2>Orbit</h2><p>Violet ground with eyespots and petals in crimson and leaf, two moths facing each other above the wordmark.</p></div></article><article class="card"><div class="mock"><img src="png/banner-flightpath.png" alt="Flight Path banner"><div class="av" aria-hidden="true">avatar</div></div>
+<div class="info"><span class="num">04</span><h2>Flight Path</h2><p>One long dotted flight path waves across the whole banner, three moths of different sizes ride it.</p></div></article><article class="card"><div class="mock"><img src="png/banner-blocks.png" alt="Blocks banner"><div class="av" aria-hidden="true">avatar</div></div>
+<div class="info"><span class="num">05</span><h2>Blocks</h2><p>Three colour blocks: contour lines on violet, the wordmark on leaf, a big moth on crimson.</p></div></article><article class="card"><div class="mock"><img src="png/banner-scatter.png" alt="Scatter banner"><div class="av" aria-hidden="true">avatar</div></div>
+<div class="info"><span class="num">06</span><h2>Scatter</h2><p>The richest one: many small elements scattered around the wordmark like a pattern.</p></div></article>
+</div>
