@@ -1,6 +1,6 @@
 ---
 name: mesokla-brand
-description: The @mesokla visual identity for X/Twitter — three colours only (leaf #A6B8A0, violet #8B729C, crimson #E20942), Montserrat Black uppercase + Manrope, and render-ready templates for the profile banner, post visuals, thread covers, lists, collab announcements, 4:5 stacks and animated intros. Use whenever the user asks for a banner, header, post visual, thread cover, announcement card, carousel, avatar treatment, animated video/intro, or says "in my style", "brand it", "зроби візуал", "банер", "обкладинка треду". Always apply these rules before designing anything for mesokla.
+description: The @mesokla visual identity for X/Twitter — three colours only (leaf #A6B8A0, violet #8B729C, crimson #E20942), Montserrat Black uppercase + Manrope, the line-art moth brand mark, abstract wing elements, and render-ready templates for the profile banner, post visuals, thread covers, lists, collab announcements, 4:5 stacks and animated intros. Use whenever the user asks for a banner, header, post visual, thread cover, announcement card, carousel, avatar treatment, animated video/intro, or says "in my style", "brand it", "зроби візуал", "банер", "обкладинка треду". Always apply these rules before designing anything for mesokla.
 ---
 
 # mesokla brand
@@ -11,7 +11,7 @@ Visual reference: `brandbook.html`. Ready renders: `out/`.
 
 ## Hard rules (the owner rejected the opposite)
 
-- Only the three colours below. No white, black, grey, gradients, textures, patterns, noise, shadows, illustrations or mascots.
+- Only the three colours below. No white, black, grey, gradients, textures, patterns, noise, shadows or character mascots. The only illustration is the line moth and its abstract elements (below).
 - Headlines in Montserrat Black 900, UPPERCASE. No serif, no italics.
 - Simple layouts: one background colour (or 2–3 flat colour bands), text, at most one highlight block.
 
@@ -34,14 +34,29 @@ Themes (`theme=`): `leaf` (default: bg leaf, text crimson, secondary violet, hig
 - Highlight: wrap one word in `*stars*` → it gets a flat block in the highlight colour. Max one per visual.
 - Fonts bundled in `fonts/` (OFL, Latin + Cyrillic, so Ukrainian works).
 
+## The moth (brand mark) — `moth/`
+
+Line-art moth: medium line (3.6px at 400px), one fine inner echo contour, wing spot. Owner picked it from line variants 1, 2 and 12.
+Files: `moth-{front|flight|trail}-{crimson|violet|leaf}.svg` (`front` = symmetric mark, `flight` = in-flight perspective, `trail` = flight with dotted trail).
+Colour by background: leaf bg → `crimson` line (violet echo); violet/crimson bg → `leaf` line.
+Rules: outline only (never filled), never thicker/shadowed, never over text, max one per visual. Animate as wing flap (`.wl/.wr` groups, scaleX around x=200), line draw-on, or flight along the trail.
+Signature lockup = front moth + MESOKLA. `fill.js` adds it to every `.sig` automatically (`sig=plain` to turn off).
+
+## Abstract elements — `elements/`
+
+`{wing|wings|contour|lens|trail|spot|curl|dots}-{crimson|violet|leaf}.svg`, all derived from the moth.
+Shapes use the third colour: leaf bg → violet, violet bg → crimson, crimson bg → violet. One element per visual, large and cropped by the frame edge or small beside text, always behind text.
+Add to any post template with `el=<name>` (or `el=moth` for the flight moth). Corner elements (wing, wings, contour, lens) hide the handle; text column narrows automatically.
+Regenerate moth + elements: `python3 scripts/gen_moth.py`.
+
 ## Templates (`templates/*.html`)
 
 Render: `node scripts/render.mjs <template> <out.png> key=value ...` (needs Playwright). `|` = new line / new list item.
-Common keys: `theme`, `kicker` (top-left label), `tag` (top-right pill), `handle`.
+Common keys: `theme`, `kicker` (top-left label), `tag` (top-right pill), `handle`, `el` (decor element), `sig=plain`.
 
 | template | size | keys |
 |---|---|---|
-| `banner` | 1500×500 | `theme` leaf/violet/crimson/stripes, `name`, `tag`, `corner`. Avatar covers bottom-left ~330×170 — keep empty |
+| `banner` | 1500×500 | `theme` leaf/violet/crimson/stripes, `moth` trail/flight/front/none (default trail), `name`, `tag`. Avatar covers bottom-left ~330×170 — keep empty |
 | `quote` | 1600×900 | `text` |
 | `thread` | 1600×900, violet | `title`, `sub`, `count` ("1 / 9") |
 | `sense-mess` | 1600×900 | `sense`, `mess` (2–4 items each, `|`-separated, ≤6 words) |

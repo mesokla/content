@@ -29,3 +29,20 @@ em{font-style:normal;background:var(--mark);color:var(--mark-fg);padding:0 .14em
 .display em{padding:.02em .14em}
 h1.display{line-height:1}
 .handle{font-family:var(--text);font-weight:700;font-size:24px;letter-spacing:.06em}
+/* moth signature lockup + decorative elements (inserted by fill.js) */
+.sig{display:inline-flex;align-items:center;gap:12px}
+.sig-moth{height:1.5em;width:auto;display:block}
+.deco{position:absolute;pointer-events:none;z-index:0}
+.frame{z-index:1}
+.deco.el-wing,.deco.el-contour{right:-60px;bottom:-80px;height:520px}
+.deco.el-wings{right:-120px;bottom:-110px;height:620px}
+.deco.el-lens{right:-110px;bottom:-110px;height:560px}
+.deco.el-spot{right:-120px;top:50%;transform:translateY(-50%);height:560px}
+.deco.el-trail{right:40px;bottom:120px;width:560px}
+.deco.el-curl{right:60px;bottom:110px;height:300px}
+.deco.el-dots{right:90px;top:140px;width:260px}
+.deco.el-moth{right:40px;top:50%;transform:translateY(-50%);height:500px}
+body.deco-corner .bottom .handle{visibility:hidden}
+body.has-deco .frame .text,body.has-deco .frame .q{max-width:940px;font-size:96px}
+body.has-deco .frame h1{max-width:960px;font-size:110px}
+[hidden]{display:none!important}
