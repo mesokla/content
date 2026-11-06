@@ -9,24 +9,22 @@ L,V,C='#A6B8A0','#8B729C','#E20942'
 EASE='cubic-bezier(.2,.8,.2,1)'
 # sentences with start/end in the audio (from pause detection, mapped to punctuation)
 TXT=['Crypto spent around two hundred million dollars on the US midterms this week,', "and it didn't get what it paid for.", 'Democrats won both the House and the Senate.', "Most of the industry's money went through Fairshake and a few other super PACs,", 'and the races they cared about most went the other way.', 'Ohio hurt the most.', 'Sherrod Brown has been sceptical of crypto for years,', 'and tens of millions were spent to keep him out.', "He's back in the Senate anyway.", 'The bigger change is Elizabeth Warren.', "She's expected to chair the Senate Banking Committee,", 'which means closer attention to exchanges, stablecoins, A-M-L and K-Y-C rules, and the crypto deals of public officials.', 'Bills like the CLARITY Act will probably stall, or come back looking very different.', "The market didn't know what to do with it.", 'Bitcoin dipped during the count, climbed back above seventy-eight thousand on Wednesday, and then sold off harder.', 'Trump-linked tokens took the worst of it.', 'On X, people are split.', 'A lot of them call it a reset.', 'Some think a divided government at least keeps things from swinging too far, and others expect Warren to come after the industry hard.', "The general read across the industry is that regulation isn't going away.", "It's just going to take longer and come with stricter rules, so projects will have to treat compliance as part of the pitch, and tokens tied to politicians now carry political risk."]
-GROUPS=[([0],0.16,4.23),([1],4.55,6.09),([2],6.48,8.87),([3],9.29,13.07),([4],13.44,16.95),([5,6],17.34,22.08),([7],22.28,25.68),
-([8,9,10],26.04,32.68),([11],33.03,39.07),([12],39.41,42.76),([13],43.04,45.56),([14],45.83,50.84),([15],51.21,52.62),([16,17],53.01,56.65),
-([18],57.08,64.25),([19],64.63,67.26),([20],67.58,73.85)]
-S=[None]*len(TXT)
-for idx,a,b in GROUPS:
-    tot=sum(len(TXT[i]) for i in idx); acc=a
-    for i in idx:
-        d=(b-a)*len(TXT[i])/tot; S[i]=(TXT[i],acc,acc+d-0.08); acc+=d
-WT=[]   # per sentence: list of (token, start)
-for txt,a,b in S:
-    toks=txt.split(); w=[len(t)+2 for t in toks]; tot=sum(w); acc=0; row=[]
-    for t,x in zip(toks,w):
-        row.append((re.sub(r"[^a-z0-9\-']","",t.lower()),O+a+(b-a)*acc/tot)); acc+=x
-    WT.append(row)
+import json as _j
+AL=[(re.sub(r"\(\d\)","",w['w']),w['s'],w['e']) for w in _j.load(open('align.json'))]
+def _norm(t):
+    t=t.replace('A-M-L','A M L').replace('K-Y-C','K Y C').replace('seventy-eight','seventy eight').replace('Trump-linked','Trump linked').replace('Long-time','long time')
+    t=re.sub(r"[^A-Za-z' ]"," ",t).lower(); return t.split()
+S=[];WT=[];k=0
+for txt in TXT:
+    toks=_norm(txt); seg=AL[k:k+len(toks)]; k+=len(toks)
+    WT.append([(w,O+st_) for (w,st_,en_) in seg]); S.append((txt,seg[0][1],seg[-1][2]))
+assert k==len(AL),(k,len(AL))
 def at(i,word,nth=1):
     k=0
+    word=word.lower()
+    exact=any(t==word for t,_ in WT[i])
     for t,s in WT[i]:
-        if t.startswith(word.lower()):
+        if (t==word) if exact else t.startswith(word):
             k+=1
             if k==nth: return s
     raise KeyError((i,word))
@@ -118,7 +116,7 @@ scene(tD,C,f"""<div class="fr"><div class="two" style="grid-template-columns:min
 {card(A+'brown.webp','Sherrod Brown · D-Ohio',at(6,'sherrod')-.2,V,700,2)}</div></div>""",L,'leaf','l')
 # ---- E · Warren (leaf) + photo ----
 tE=st(9)-.3
-items=[('exchanges','exchanges'),('stablecoins','stablecoins'),('aml / kyc','a-m-l'),('officials’ crypto deals','deals')]
+items=[('exchanges','exchanges'),('stablecoins','stablecoins'),('aml / kyc','m'),('officials’ crypto deals','deals')]
 lis=''.join(f'<li style="{appear(at(11,w),.4,"opacity:0;transform:translateX(-60px)","opacity:1;transform:none")}"><b>0{i+1}</b>{x}</li>' for i,(x,w) in enumerate(items))
 scene(tE,L,f"""<div class="fr">{K('the bigger change',tE+.4,V)}
 <div class="three">{card(A+'warren.webp','Elizabeth Warren',at(9,'elizabeth')-.3,V,500,-2)}
