@@ -3,12 +3,12 @@ import re
 B='/home/user/content/.claude/skills/mesokla-brand'
 A='/home/user/content/videos/midterms/assets/'
 O=3.0                      # voice starts after the slow moth intro
-VO_END=74.21+0.3*8
+VO_END=75.08+0.3*8
 T=O+VO_END+3.4
 L,V,C='#A6B8A0','#8B729C','#E20942'
 EASE='cubic-bezier(.2,.8,.2,1)'
 # sentences with start/end in the audio (from pause detection, mapped to punctuation)
-TXT=['Crypto spent around two hundred million dollars on the US midterms this week,', "and it didn't get what it paid for.", 'Democrats won both the House and the Senate.', "Most of the industry's money went through Fairshake and a few other super PACs,", 'and the races they cared about most went the other way.', 'Ohio hurt the most.', 'Sherrod Brown has been sceptical of crypto for years,', 'and tens of millions were spent to keep him out.', "He's back in the Senate anyway.", 'The bigger change is Elizabeth Warren.', "She's expected to chair the Senate Banking Committee,", 'which means closer attention to exchanges, stablecoins, A-M-L and K-Y-C rules, and the crypto deals of public officials.', 'Bills like the CLARITY Act will probably stall, or come back looking very different.', "The market didn't know what to do with it.", 'Bitcoin dipped during the count, climbed back above seventy-eight thousand on Wednesday, and then sold off harder.', 'Trump-linked tokens took the worst of it.', 'On X, people are split.', 'A lot of them call it a reset.', 'Some think a divided government at least keeps things from swinging too far, and others expect Warren to come after the industry hard.', "The general read across the industry is that regulation isn't going away.", "It's just going to take longer and come with stricter rules, so projects will have to treat compliance as part of the pitch, and tokens tied to politicians now carry political risk."]
+TXT=['Crypto spent more than a hundred and seventy million dollars on the US midterms this week,', "and it didn't get what it paid for.", 'Democrats won both the House and the Senate.', "Most of the industry's money went through Fairshake and a few other super PACs,", 'and the races they cared about most went the other way.', 'Ohio hurt the most.', 'Sherrod Brown has been sceptical of crypto for years,', 'and tens of millions were spent to keep him out.', "He's back in the Senate anyway.", 'The bigger change is Elizabeth Warren.', "She's expected to chair the Senate Banking Committee,", 'which means closer attention to exchanges, stablecoins, A-M-L and K-Y-C rules, and the crypto deals of public officials.', 'Bills like the CLARITY Act will probably stall, or come back looking very different.', "The market didn't know what to do with it.", 'Bitcoin dipped during the count, climbed back above seventy-eight thousand on Wednesday, and then sold off harder.', 'Trump-linked tokens took the worst of it.', 'On X, people are split.', 'A lot of them call it a reset.', 'Some think a divided government at least keeps things from swinging too far, and others expect Warren to come after the industry hard.', "The general read across the industry is that regulation isn't going away.", "It's just going to take longer and come with stricter rules, so projects will have to treat compliance as part of the pitch, and tokens tied to politicians now carry political risk."]
 import json as _j
 AL=[(re.sub(r"\(\d\)","",w['w']),w['s'],w['e']) for w in _j.load(open('align.json'))]
 def _norm(t):
@@ -89,7 +89,7 @@ scene(0,C,f'''<div class="trail" style="{trail_out}">{dots}</div>
 <div class="flyer" style="offset-path:path('{path}');offset-rotate:0deg;{fly}"><div style="{tilt}">{moth(L,L,.55,6,'slowflap')}</div></div>
 <div class="fr" style="justify-content:center;max-width:1300px">
 <div class="h" style="font-size:96px;margin-bottom:70px">{words('crypto spent',at(0,'crypto'),at(0,'spent'))}</div>
-<div class="h" style="font-size:260px;line-height:.9;{appear(at(0,'two'),.5,'opacity:0;transform:scale(.8)','opacity:1;transform:none')}">{hl('$200M',at(0,'million'),V,L,L)}</div>
+<div class="h" style="font-size:260px;line-height:.9;{appear(at(0,'hundred'),.5,'opacity:0;transform:scale(.8)','opacity:1;transform:none')}">{hl('$170M+',at(0,'million'),V,L,L)}</div>
 <div class="sub" style="{fade(at(0,'midterms'))}">on the US midterms this week</div>
 <div class="h" style="font-size:96px;margin-top:40px">{words('and',at(1,'and'),at(1,'and'))} {hl(words("didn’t get",at(1,"didn't"),at(1,'get')),at(1,'get'),V,L,L)} {words('what it paid for.',at(1,'what'),at(1,'for'))}</div></div>''',L,'leaf')
 # ---- B · who won (leaf) ----
@@ -102,13 +102,13 @@ scene(tB,L,f'''<div class="fr">{K('this week · us midterms',tB+.4,V)}
 <div>{row('house',at(2,'house'))}{row('senate',at(2,'senate'))}</div></div></div>''',C,'crimson','l')
 # ---- C · money (violet) + Cointelegraph headline ----
 tC=st(3)-.3
-nums=''.join(f'<span>{v}</span>' for v in range(0,201,10))
+nums=''.join(f'<span>{v}</span>' for v in range(0,171,10))
 a0,a1=at(3,'most'),at(3,'fairshake')
-EV['tick']=[round(a0+(a1-a0)*k/20,3) for k in range(1,21)]
-css.append('@keyframes odo{0%{transform:translateY(0)}'+f'{a0/T*100:.4f}%{{transform:translateY(0);animation-timing-function:steps(20,end)}}{a1/T*100:.4f}%{{transform:translateY(-20em)}}100%{{transform:translateY(-20em)}}'+'}')
+EV['tick']=[round(a0+(a1-a0)*k/17,3) for k in range(1,18)]
+css.append('@keyframes odo{0%{transform:translateY(0)}'+f'{a0/T*100:.4f}%{{transform:translateY(0);animation-timing-function:steps(17,end)}}{a1/T*100:.4f}%{{transform:translateY(-17em)}}100%{{transform:translateY(-17em)}}'+'}')
 scene(tC,V,f"""<div class="fr">{K('the bet',tC+.4)}
 <div class="two" style="grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr)"><div>
-<div class="h" style="font-size:168px;line-height:.9;white-space:nowrap;{appear(a0-.2,.4)}">≈$<span class="odo"><span class="strip" style="animation:odo {T}s linear both">{nums}</span></span>M</div>
+<div class="h" style="font-size:168px;line-height:.9;white-space:nowrap;{appear(a0-.2,.4)}">$<span class="odo"><span class="strip" style="animation:odo {T}s linear both">{nums}</span></span>M+</div>
 <div class="h" style="font-size:54px;margin-top:20px;{fade(a1-.3)}">through {hl('fairshake',a1,C,L,L)} + super pacs</div>
 <div class="stamp" style="{pop(at(4,'races'))}">key races went the other way</div></div>
 {card(A+'ct-headline.png','source: Cointelegraph · Nov 4',at(3,'industry'),C,840,-2)}</div></div>""",L,'leaf','r')
