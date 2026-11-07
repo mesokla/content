@@ -3,7 +3,7 @@ import re
 B='/home/user/content/.claude/skills/mesokla-brand'
 A='/home/user/content/videos/midterms/assets/'
 O=3.0                      # voice starts after the slow moth intro
-VO_END=74.21+1.1*8
+VO_END=74.21+0.3*8
 T=O+VO_END+3.4
 L,V,C='#A6B8A0','#8B729C','#E20942'
 EASE='cubic-bezier(.2,.8,.2,1)'
@@ -20,7 +20,7 @@ for txt in TXT:
     WT.append([(w,O+st_) for (w,st_,en_) in seg]); S.append((txt,seg[0][1],seg[-1][2]))
 assert k==len(AL),(k,len(AL))
 BOUND=[2,3,5,9,12,13,16,19]      # first sentence of each new scene
-GAP=1.1
+GAP=0.3
 def shift(i): return GAP*sum(1 for b in BOUND if b<=i)
 WT=[[(w,t+shift(i)) for w,t in row] for i,row in enumerate(WT)]
 S=[(txt,a+shift(i),b+shift(i)) for i,(txt,a,b) in enumerate(S)]
