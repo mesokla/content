@@ -1,9 +1,7 @@
-# Midterms × crypto — short post (with the video)
+# Midterms × crypto — post (with the video)
 
-crypto spent more than $170M on the US midterms through super PACs like Fairshake, political funds that can pour unlimited money into backing or attacking candidates
+the US just voted for a new Congress, the people who write the laws, and crypto spent more than $170M trying to get friendly politicians in
 
-the biggest bets didn't land. democrats took Congress, Sherrod Brown won in Ohio after tens of millions were spent against him, and Elizabeth Warren is expected to run Senate Banking. for crypto that means slower, stricter rules
+most of that money went through Fairshake, the industry's political fund. it lost its biggest bets: democrats took both the House and the Senate, and Sherrod Brown, a long-time crypto critic, won in Ohio after tens of millions were spent against him
 
-## Alternative (even shorter)
-
-crypto put $170M+ into the midterms and still got a democratic Congress, Sherrod Brown back in the Senate and Elizabeth Warren likely running Senate Banking. here's what that means for the industry
+what changes for crypto: Elizabeth Warren is expected to lead the Senate committee that handles financial laws, and the CLARITY Act, the bill meant to finally give crypto clear US rules, will probably stall. rules are still coming, just slower and stricter
