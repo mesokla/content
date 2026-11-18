@@ -1,14 +1,14 @@
 # Try or wonder — post (with the visual)
 
-## Draft
-honestly most of the stuff i was scared to try ended up being fine. some of it worked, some of it didn't, and either way i walked away knowing more than before
+## Option 1
+made this mostly as a reminder for myself bc i overthink everything and then just don't do half of it
 
-the things i skipped are the ones i still think about
+the stuff i did end up trying was mostly fine, or at least i figured out what not to do. the stuff i skipped i still think about lol
 
-## Final
-every time i almost didn't try something, it turned out fine. sometimes it worked, sometimes it flopped and i learned what not to do next time
+## Option 2
+i've skipped so many things bc i was scared of looking dumb
 
-the only things i actually regret are the ones i never tried. those still pop up in my head at 2am as "what if"
+funny part is i barely remember the times i actually looked dumb. i do remember every thing i never tried
 
-## Shorter
-the stuff i tried either worked or taught me something. the stuff i skipped still shows up at 2am as "what if"
+## Option 3
+saving this for the next time i talk myself out of something
